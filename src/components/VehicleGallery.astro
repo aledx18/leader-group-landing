@@ -1,0 +1,141 @@
+---
+import Icon from "@/components/Icon.astro";
+import VehiclePhoto from "@/components/VehiclePhoto.astro";
+
+interface Props {
+  name: string;
+  photos: string[];
+}
+
+const { name, photos } = Astro.props;
+// An empty list still renders one slide with the placeholder image.
+const slides: (string | undefined)[] = photos.length > 0 ? photos : [undefined];
+const total = slides.length;
+const sizes = "(min-width: 64rem) 40rem, (min-width: 48rem) 60vw, 100vw";
+---
+
+<div class="flex flex-col gap-3" data-gallery>
+  <div class="relative">
+    <ul
+      class="flex snap-x snap-mandatory overflow-x-auto overscroll-x-contain bg-night [scrollbar-width:none] md:rounded-xl [&::-webkit-scrollbar]:hidden"
+      aria-label={`Fotos de ${name}`}
+      data-gallery-track
+    >
+      {
+        slides.map((photo, index) => (
+          <li
+            id={`foto-${index + 1}`}
+            class="w-full shrink-0 snap-center"
+            aria-label={`Foto ${index + 1} de ${total}`}
+          >
+            <VehiclePhoto
+              photo={photo}
+              alt={photo ? `${name}, foto ${index + 1} de ${total}` : `${name}, fotos próximamente`}
+              sizes={sizes}
+              widths={[480, 768, 1024, 1280]}
+              loading={index === 0 ? "eager" : "lazy"}
+              fetchpriority={index === 0 ? "high" : "auto"}
+              class="aspect-[4/3] w-full object-cover md:aspect-[16/10]"
+            />
+          </li>
+        ))
+      }
+    </ul>
+
+    {
+      total > 1 && (
+        <>
+          <p
+            class="pointer-events-none absolute right-3 bottom-3 rounded-full bg-night/80 px-2.5 py-1 text-xs font-semibold text-white"
+            aria-hidden="true"
+          >
+            <span data-gallery-current>1</span> / {total}
+          </p>
+          <button
+            type="button"
+            class="absolute top-1/2 left-3 hidden size-11 -translate-y-1/2 items-center justify-center rounded-full bg-night/75 text-white hover:bg-night md:inline-flex"
+            data-gallery-prev
+          >
+            <Icon name="chevron-left" size={22} />
+            <span class="sr-only">Foto anterior</span>
+          </button>
+          <button
+            type="button"
+            class="absolute top-1/2 right-3 hidden size-11 -translate-y-1/2 items-center justify-center rounded-full bg-night/75 text-white hover:bg-night md:inline-flex"
+            data-gallery-next
+          >
+            <Icon name="chevron-right" size={22} />
+            <span class="sr-only">Foto siguiente</span>
+          </button>
+        </>
+      )
+    }
+  </div>
+
+  {
+    total > 1 && (
+      <ul class="container-page flex gap-2 overflow-x-auto md:px-0" aria-label="Miniaturas">
+        {slides.map((photo, index) => (
+          <li class="shrink-0">
+            <a
+              href={`#foto-${index + 1}`}
+              class="block overflow-hidden rounded-md border-2 border-transparent aria-[current=true]:border-brand"
+              aria-current={index === 0 ? "true" : "false"}
+              data-gallery-thumb={index}
+            >
+              <VehiclePhoto
+                photo={photo}
+                alt=""
+                sizes="5rem"
+                widths={[160]}
+                class="aspect-[4/3] w-20 object-cover"
+              />
+              <span class="sr-only">
+                Ver foto {index + 1} de {total}
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</div>
+
+<script is:inline>
+  (() => {
+    document.querySelectorAll("[data-gallery]").forEach((gallery) => {
+      const track = gallery.querySelector("[data-gallery-track]");
+      const thumbs = [...gallery.querySelectorAll("[data-gallery-thumb]")];
+      const current = gallery.querySelector("[data-gallery-current]");
+      if (!track || thumbs.length === 0) return;
+      const slides = [...track.children];
+      let index = 0;
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const go = (next) => {
+        const target = slides[Math.max(0, Math.min(slides.length - 1, next))];
+        if (target) track.scrollTo({ left: target.offsetLeft, behavior: reduce ? "auto" : "smooth" });
+      };
+      const mark = (next) => {
+        index = next;
+        if (current) current.textContent = String(next + 1);
+        thumbs.forEach((thumb, i) => thumb.setAttribute("aria-current", String(i === next)));
+      };
+      track.addEventListener(
+        "scroll",
+        () => {
+          const next = Math.round(track.scrollLeft / track.clientWidth);
+          if (next !== index) mark(next);
+        },
+        { passive: true },
+      );
+      thumbs.forEach((thumb, i) =>
+        thumb.addEventListener("click", (event) => {
+          event.preventDefault();
+          go(i);
+        }),
+      );
+      gallery.querySelector("[data-gallery-prev]")?.addEventListener("click", () => go(index - 1));
+      gallery.querySelector("[data-gallery-next]")?.addEventListener("click", () => go(index + 1));
+    });
+  })();
+</script>

@@ -1,4 +1,5 @@
 /** JSON-LD node builders (schema.org). Pure functions, no Astro imports. */
+import type { Vehicle } from "./stock/types";
 
 type JsonLdNode = Record<string, unknown>;
 
@@ -52,5 +53,53 @@ export function autoDealerNode(dealer: DealerInfo, siteUrl: string): JsonLdNode 
     },
     openingHours: [...dealer.openingHours],
     sameAs: dealer.socials.map((social) => social.href),
+  };
+}
+
+export interface CarNodeInput {
+  vehicle: Vehicle;
+  /** Absolute canonical URL of the vehicle page. */
+  pageUrl: string;
+  /** Absolute URLs of the optimized photos, cover first. */
+  images: readonly string[];
+  siteUrl: string;
+}
+
+/** A used Car with an in-stock Offer sold by the site's AutoDealer node. */
+export function carNode({ vehicle, pageUrl, images, siteUrl }: CarNodeInput): JsonLdNode {
+  const condition = "https://schema.org/UsedCondition";
+  return {
+    "@type": "Car",
+    "@id": `${pageUrl}#vehicle`,
+    name: vehicle.name,
+    url: pageUrl,
+    image: [...images],
+    itemCondition: condition,
+    offers: {
+      "@type": "Offer",
+      url: pageUrl,
+      price: vehicle.price,
+      priceCurrency: vehicle.currency,
+      availability: "https://schema.org/InStock",
+      itemCondition: condition,
+      seller: { "@id": `${origin(siteUrl)}/#organization` },
+    },
+  };
+}
+
+/** BreadcrumbList for a page, items in order (absolute URLs). */
+export function breadcrumbNode(
+  pageUrl: string,
+  items: readonly { name: string; url: string }[],
+): JsonLdNode {
+  return {
+    "@type": "BreadcrumbList",
+    "@id": `${pageUrl}#breadcrumb`,
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: item.url,
+    })),
   };
 }

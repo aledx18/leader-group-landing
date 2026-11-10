@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { autoDealerNode } from "@/lib/structured-data";
+import { autoDealerNode, breadcrumbNode, carNode } from "@/lib/structured-data";
 
 const business = {
   name: "Leader Group",
@@ -49,5 +49,78 @@ describe("autoDealerNode", () => {
   it("never includes ratings or reviews", () => {
     expect(node).not.toHaveProperty("aggregateRating");
     expect(node).not.toHaveProperty("review");
+  });
+});
+
+describe("carNode", () => {
+  const node = carNode({
+    vehicle: {
+      id: "7c1e2a90",
+      slug: "toyota-corolla-xei-2-0-7c1e2a",
+      name: "Toyota Corolla XEI 2.0",
+      price: 18900,
+      currency: "USD",
+      photos: ["https://abc.supabase.co/a.jpg"],
+    },
+    pageUrl: "https://leadergroup.example/autos/toyota-corolla-xei-2-0-7c1e2a/",
+    images: [
+      "https://leadergroup.example/_astro/a.webp",
+      "https://leadergroup.example/_astro/b.webp",
+    ],
+    siteUrl: "https://leadergroup.example/",
+  });
+
+  it("describes the vehicle as a used Car with its page url and images", () => {
+    expect(node["@type"]).toBe("Car");
+    expect(node["@id"]).toBe(
+      "https://leadergroup.example/autos/toyota-corolla-xei-2-0-7c1e2a/#vehicle",
+    );
+    expect(node.name).toBe("Toyota Corolla XEI 2.0");
+    expect(node.url).toBe("https://leadergroup.example/autos/toyota-corolla-xei-2-0-7c1e2a/");
+    expect(node.image).toEqual([
+      "https://leadergroup.example/_astro/a.webp",
+      "https://leadergroup.example/_astro/b.webp",
+    ]);
+    expect(node.itemCondition).toBe("https://schema.org/UsedCondition");
+  });
+
+  it("includes an in-stock Offer with price, currency and the dealer as seller", () => {
+    expect(node.offers).toEqual({
+      "@type": "Offer",
+      url: "https://leadergroup.example/autos/toyota-corolla-xei-2-0-7c1e2a/",
+      price: 18900,
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+      itemCondition: "https://schema.org/UsedCondition",
+      seller: { "@id": "https://leadergroup.example/#organization" },
+    });
+  });
+
+  it("never includes ratings or reviews", () => {
+    expect(node).not.toHaveProperty("aggregateRating");
+    expect(node).not.toHaveProperty("review");
+  });
+});
+
+describe("breadcrumbNode", () => {
+  it("lists the items in order with 1-based positions and absolute urls", () => {
+    expect(
+      breadcrumbNode("https://leadergroup.example/autos/x/", [
+        { name: "Inicio", url: "https://leadergroup.example/" },
+        { name: "Toyota Corolla XEI 2.0", url: "https://leadergroup.example/autos/x/" },
+      ]),
+    ).toEqual({
+      "@type": "BreadcrumbList",
+      "@id": "https://leadergroup.example/autos/x/#breadcrumb",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Inicio", item: "https://leadergroup.example/" },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Toyota Corolla XEI 2.0",
+          item: "https://leadergroup.example/autos/x/",
+        },
+      ],
+    });
   });
 });

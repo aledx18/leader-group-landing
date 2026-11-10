@@ -1,0 +1,176 @@
+---
+import type { GetStaticPaths } from "astro";
+import Footer from "@/components/Footer.astro";
+import Header from "@/components/Header.astro";
+import Icon from "@/components/Icon.astro";
+import VehicleCard from "@/components/VehicleCard.astro";
+import VehicleGallery from "@/components/VehicleGallery.astro";
+import { site } from "@/config/site";
+import Layout from "@/layouts/Layout.astro";
+import { contactLink } from "@/lib/contact";
+import { formatPrice } from "@/lib/format";
+import { getStock, type Vehicle } from "@/lib/stock";
+import { optimizedPhoto } from "@/lib/stock/images";
+import { breadcrumbNode, carNode } from "@/lib/structured-data";
+import { vehicleInquiryMessage } from "@/lib/whatsapp";
+
+export const getStaticPaths = (async () => {
+  const { vehicles } = await getStock();
+  return vehicles.map((vehicle) => ({
+    params: { slug: vehicle.slug },
+    props: { vehicle, others: vehicles.filter((other) => other.id !== vehicle.id) },
+  }));
+}) satisfies GetStaticPaths;
+
+interface Props {
+  vehicle: Vehicle;
+  others: Vehicle[];
+}
+
+const { vehicle, others } = Astro.props;
+
+const path = `/autos/${vehicle.slug}/`;
+const pageUrl = new URL(path, `${site.url}/`).href;
+const price = formatPrice(vehicle.price, vehicle.currency);
+const whatsapp = contactLink(vehicleInquiryMessage(vehicle.name, pageUrl));
+
+const title = `${vehicle.name} | ${price} | Leader Group`;
+const description = `${vehicle.name} usado en venta por ${price} de contado en Leader Group. Revisado, con papeles al día y precio claro. Consulta por WhatsApp.`;
+
+// Social card: cover cropped to 1200x630 JPEG; JSON-LD: every photo at 1280px.
+const absolute = (src: string) => new URL(src, `${site.url}/`).href;
+const ogImage = await optimizedPhoto(vehicle.photos[0], { width: 1200, height: 630, format: "jpg" });
+const jsonLdImages = await Promise.all(
+  (vehicle.photos.length > 0 ? vehicle.photos : [undefined]).map(
+    async (photo) => absolute((await optimizedPhoto(photo, { width: 1280 })).src),
+  ),
+);
+
+const jsonLd = [
+  carNode({ vehicle, pageUrl, images: jsonLdImages, siteUrl: site.url }),
+  breadcrumbNode(pageUrl, [
+    { name: "Inicio", url: `${site.url}/` },
+    { name: vehicle.name, url: pageUrl },
+  ]),
+];
+
+const otherSizes =
+  "(min-width: 72rem) 22rem, (min-width: 64rem) calc(33vw - 2.5rem), (min-width: 40rem) calc(50vw - 3rem), calc(100vw - 2.5rem)";
+---
+
+<Layout
+  title={title}
+  description={description}
+  url={path}
+  type="product"
+  image={absolute(ogImage.src)}
+  imageAlt={`Foto de ${vehicle.name}`}
+  imageWidth={ogImage.width}
+  imageHeight={ogImage.height}
+  jsonLd={jsonLd}
+>
+  <Header slot="header" />
+
+  <nav aria-label="Ruta de navegación" class="container-page py-3 text-sm text-ink-soft">
+    <ol class="flex min-w-0 items-center gap-1.5">
+      <li class="shrink-0">
+        <a href="/" class="inline-flex min-h-11 items-center gap-1 font-semibold text-ink hover:underline">
+          <Icon name="arrow-left" size={16} />
+          Inicio
+        </a>
+      </li>
+      <li aria-hidden="true">/</li>
+      <li class="truncate" aria-current="page">{vehicle.name}</li>
+    </ol>
+  </nav>
+
+  <article class="md:container-page md:grid md:grid-cols-[1.4fr_1fr] md:items-start md:gap-10">
+    <VehicleGallery name={vehicle.name} photos={vehicle.photos} />
+
+    <div class="container-page flex flex-col gap-5 pt-5 pb-10 md:sticky md:top-24 md:px-0 md:pt-0">
+      <h1 class="font-display text-[30px] leading-[1.05] font-black text-balance md:text-4xl">
+        {vehicle.name}
+      </h1>
+
+      <p class="flex flex-col gap-1">
+        <span class="text-sm text-ink-soft">Precio contado</span>
+        <span class="font-display text-4xl leading-none font-black whitespace-nowrap">{price}</span>
+      </p>
+
+      <a href={whatsapp} rel="noopener" target="_blank" class="btn bg-brand text-white hover:bg-brand-strong">
+        <Icon name="message-circle" size={20} />
+        Consultar por WhatsApp
+      </a>
+
+      <ul class="flex flex-col rounded-xl border border-line bg-paper px-4">
+        <li class="flex gap-3 border-b border-line py-3.5">
+          <Icon name="shield-check" size={20} class="mt-0.5 shrink-0 text-brand" />
+          <span class="text-sm text-ink-soft">
+            <strong class="block text-[15px] text-ink">Peritaje de 120 puntos</strong>
+            Mecánica, chapa y electrónica revisadas antes de publicarse.
+          </span>
+        </li>
+        <li class="flex gap-3 border-b border-line py-3.5">
+          <Icon name="file-check" size={20} class="mt-0.5 shrink-0 text-brand" />
+          <span class="text-sm text-ink-soft">
+            <strong class="block text-[15px] text-ink">Papeles al día</strong>
+            Verificamos dominio, multas e informes.
+          </span>
+        </li>
+        <li class="flex gap-3 py-3.5">
+          <Icon name="key" size={20} class="mt-0.5 shrink-0 text-brand" />
+          <span class="text-sm text-ink-soft">
+            <strong class="block text-[15px] text-ink">Tomamos tu usado</strong>
+            Consulta por el{" "}
+            <a href="/#canje" class="font-semibold text-brand-strong underline underline-offset-2">plan canje</a>{" "}
+            y la{" "}
+            <a href="/#financiacion" class="font-semibold text-brand-strong underline underline-offset-2">financiación</a>.
+          </span>
+        </li>
+      </ul>
+    </div>
+  </article>
+
+  {
+    others.length > 0 && (
+      <section class="bg-mist py-10 md:py-16" aria-labelledby="others-title">
+        <div class="container-page flex flex-col gap-6">
+          <h2 id="others-title" class="font-display text-2xl font-black md:text-3xl">
+            Otros autos disponibles
+          </h2>
+          <ul class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {others.map((other) => (
+              <li class="flex">
+                <VehicleCard vehicle={other} sizes={otherSizes} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )
+  }
+
+  <div
+    class="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-paper/95 backdrop-blur md:hidden"
+    style="padding-bottom: env(safe-area-inset-bottom);"
+  >
+    <div class="container-page flex items-center justify-between gap-3 py-3">
+      <p class="flex min-w-0 flex-col">
+        <span class="truncate text-xs text-ink-soft">{vehicle.name}</span>
+        <span class="font-display text-xl leading-tight font-black whitespace-nowrap">{price}</span>
+      </p>
+      <a
+        href={whatsapp}
+        rel="noopener"
+        target="_blank"
+        class="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-lg bg-brand px-4 font-semibold text-white hover:bg-brand-strong"
+      >
+        <Icon name="message-circle" size={20} />
+        WhatsApp
+        <span class="sr-only">: consultar por {vehicle.name}</span>
+      </a>
+    </div>
+  </div>
+
+  <Footer slot="footer" />
+</Layout>
