@@ -1,0 +1,36 @@
+---
+import Icon from "@/components/Icon.astro";
+import { business } from "@/config/business";
+
+const t = business.testimonial;
+const initials = t.author
+  .split(/\s+/)
+  .map((part) => part[0] ?? "")
+  .join("")
+  .replace(/[^A-Za-zÁÉÍÓÚÑáéíóúñ]/g, "")
+  .slice(0, 2)
+  .toUpperCase();
+---
+
+<section class="bg-tint py-12 md:py-20" aria-label="Opinión de un cliente">
+  <figure class="container-page flex max-w-3xl flex-col gap-5">
+    <div class="flex gap-1 text-signal" role="img" aria-label="5 de 5 estrellas">
+      {Array.from({ length: 5 }, () => <Icon name="star" size={22} filled />)}
+    </div>
+    <blockquote>
+      <p class="font-display text-[22px] leading-snug font-bold md:text-3xl">“{t.quote}”</p>
+    </blockquote>
+    <figcaption class="flex items-center gap-3">
+      <span
+        class="flex size-11 items-center justify-center rounded-full bg-night font-display text-sm font-black text-white"
+        aria-hidden="true"
+      >
+        {initials}
+      </span>
+      <span class="flex flex-col gap-0.5">
+        <span class="text-[15px] font-bold">{t.author}</span>
+        <span class="text-[13px] text-ink-soft">{t.detail}</span>
+      </span>
+    </figcaption>
+  </figure>
+</section>

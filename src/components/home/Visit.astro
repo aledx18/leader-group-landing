@@ -1,0 +1,81 @@
+---
+import Icon, { type IconName } from "@/components/Icon.astro";
+import { business } from "@/config/business";
+import { contactLink, directionsLink, phoneLink } from "@/lib/contact";
+
+const rows: { icon: IconName; title: string; detail: string; href?: string }[] = [
+  { icon: "map-pin", title: business.address.display, detail: business.address.note },
+  { icon: "clock", title: business.hours.primary, detail: business.hours.secondary },
+  {
+    icon: "phone",
+    title: business.phoneDisplay,
+    detail: business.phoneNote,
+    href: phoneLink(),
+  },
+];
+---
+
+<section id="contacto" class="bg-mist py-12 md:py-20" aria-labelledby="visit-title">
+  <div class="container-page grid gap-5 md:grid-cols-2 md:gap-12">
+    <div class="flex flex-col gap-5">
+      <div class="flex flex-col gap-2.5">
+        <p class="eyebrow text-brand-strong">Visítanos</p>
+        <h2 id="visit-title" class="font-display text-[28px] leading-[1.08] font-black md:text-4xl">
+          Ven a verlos en persona.
+        </h2>
+      </div>
+      <div
+        class="relative flex aspect-[16/9] items-center justify-center overflow-hidden rounded-xl bg-night bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:28px_28px]"
+        aria-hidden="true"
+      >
+        <span
+          class="absolute size-40 rounded-full bg-[radial-gradient(circle,rgba(30,222,241,0.25),transparent_70%)]"
+        ></span>
+        <Icon name="map-pin" size={56} class="relative text-cyan" />
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-6 md:justify-end">
+      <address class="flex flex-col not-italic">
+        {
+          rows.map((row) => (
+            <div class="flex gap-3.5 border-b border-line py-3.5 last:border-b-0">
+              <Icon name={row.icon} size={22} class="mt-0.5 shrink-0 text-ink" />
+              <p class="flex flex-col gap-0.5">
+                {row.href ? (
+                  <a href={row.href} class="-my-2.5 inline-flex min-h-11 items-center text-[15px] font-semibold underline-offset-4 hover:underline">
+                    {row.title}
+                  </a>
+                ) : (
+                  <span class="text-[15px] font-semibold">{row.title}</span>
+                )}
+                <span class="text-[13px] text-ink-soft">{row.detail}</span>
+              </p>
+            </div>
+          ))
+        }
+      </address>
+
+      <div class="grid grid-cols-2 gap-2.5">
+        <a
+          href={directionsLink()}
+          rel="noopener"
+          target="_blank"
+          class="btn border border-line bg-paper text-[15px] text-ink hover:border-ink"
+        >
+          <Icon name="navigation" size={18} />
+          Cómo llegar
+        </a>
+        <a
+          href={contactLink(business.messages.general)}
+          rel="noopener"
+          target="_blank"
+          class="btn bg-brand text-[15px] text-white hover:bg-brand-strong"
+        >
+          <Icon name="message-circle" size={18} />
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

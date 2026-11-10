@@ -22,7 +22,7 @@ Package manager: bun. Checks: `bun run test` (vitest), `bun run check` (astro ch
 
 - [x] T1 — Scaffold, tokens and brand assets (S1, S2, S3). Route: delegated (user asked for Opus). Commit: `9cc0f13`
 - [x] T2 — SEO base: site config, Seo, Layout, robots, sitemap, manifest, 404 (S4, S9). Route: delegated. Commit: `6cf5045`
-- [ ] T3 — Stock data layer, fixture, tests, endpoint doc (S7). Route: delegated. Commit: —
+- [x] T3 — Stock data layer, fixture, tests, endpoint doc (S7). Route: delegated. Commit: `acbcb96`
 - [ ] T4 — Home page sections with placeholders (S2, S3, S6, S8). Route: delegated. Commit: —
 - [ ] T5 — Vehicle pages with structured data (S5). Route: delegated. Commit: —
 - [ ] T6 — README, deploy notes, final checks (S9, S10). Route: delegated. Commit: —
@@ -36,3 +36,4 @@ Package manager: bun. Checks: `bun run test` (vitest), `bun run check` (astro ch
 - L5 (2026-11-10): Explored `init-landing` templates and the private system migrations (read only). Decisions: static build with stock fetched at build time and refreshed by a Vercel deploy hook; templates adapted by hand instead of running the CLI, to leave out Starwind UI and the theme toggle; the reference design's search box, category chips and "ver todos" are dropped per L2. Route: one Opus writer for T1-T6 in sequence, because the user asked for Opus to execute the plan.
 - L6 (2026-11-10): T1 done in `9cc0f13`: Astro 7.4.9 static + Tailwind 4.3 (Vite plugin), TS strict, `@/*`, biome. Palette sampled from `auto-512.png`: brand #146DD4, sky #1AA0DE, cyan #1EDEF1, signal red #C32232, night #05070B; fonts Archivo 800/900 + Inter variable self-hosted.
 - L7 (2026-11-10): T2 done in `6cf5045`: `site` from `SITE_URL` (placeholder `https://leadergroup.example`), Seo/Layout adapted without Starwind/theme toggle, `lang="es-AR"`, robots and sitemap verified with a custom `SITE_URL`.
+- L8 (2026-11-10): T3 done in `acbcb96`: allowlist loader with injected fetch, fixture fallback, build fails when the endpoint fails (observed exit 1 with an unreachable `STOCK_API_URL`); RED observed before implementation (missing modules), then 30 tests green.

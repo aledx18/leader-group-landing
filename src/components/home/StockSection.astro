@@ -1,0 +1,67 @@
+---
+import Icon from "@/components/Icon.astro";
+import VehicleCard from "@/components/VehicleCard.astro";
+import { business } from "@/config/business";
+import { contactLink } from "@/lib/contact";
+import type { Vehicle } from "@/lib/stock";
+
+interface Props {
+  vehicles: Vehicle[];
+}
+
+const { vehicles } = Astro.props;
+const count = vehicles.length;
+
+// Grid adapts to how few vehicles there are: one large card, two side by side, or three columns.
+const gridClass =
+  count === 1
+    ? "mx-auto max-w-2xl"
+    : count === 2
+      ? "sm:grid-cols-2"
+      : "sm:grid-cols-2 lg:grid-cols-3";
+const sizes =
+  count === 1
+    ? "(min-width: 48rem) 42rem, calc(100vw - 2.5rem)"
+    : count === 2
+      ? "(min-width: 72rem) 34rem, (min-width: 40rem) calc(50vw - 3rem), calc(100vw - 2.5rem)"
+      : "(min-width: 72rem) 22rem, (min-width: 64rem) calc(33vw - 2.5rem), (min-width: 40rem) calc(50vw - 3rem), calc(100vw - 2.5rem)";
+---
+
+<section id="stock" class="bg-mist py-10 md:py-16" aria-labelledby="stock-title">
+  <div class="container-page flex flex-col gap-6">
+    <div class="flex flex-col gap-1">
+      <p class="eyebrow text-brand-strong">Stock destacado</p>
+      <h2 id="stock-title" class="font-display text-[28px] leading-tight font-black md:text-4xl">
+        Recién llegados
+      </h2>
+    </div>
+
+    {
+      count > 0 ? (
+        <ul class:list={["grid gap-5 md:gap-6", gridClass]}>
+          {vehicles.map((vehicle) => (
+            <li class="flex">
+              <VehicleCard vehicle={vehicle} sizes={sizes} />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div class="flex flex-col items-start gap-4 rounded-xl border border-line bg-paper p-6 md:p-8">
+          <h3 class="font-display text-xl font-extrabold">Estamos renovando el stock</h3>
+          <p class="max-w-lg text-ink-soft">
+            Escríbenos por WhatsApp y te avisamos apenas ingrese un auto como el que buscas.
+          </p>
+          <a
+            href={contactLink(business.messages.general)}
+            rel="noopener"
+            target="_blank"
+            class="btn bg-brand text-white hover:bg-brand-strong"
+          >
+            <Icon name="message-circle" size={20} />
+            Consultar por WhatsApp
+          </a>
+        </div>
+      )
+    }
+  </div>
+</section>

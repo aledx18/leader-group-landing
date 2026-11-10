@@ -1,0 +1,60 @@
+---
+import BrandLogo from "@/components/BrandLogo.astro";
+import Icon from "@/components/Icon.astro";
+import { business } from "@/config/business";
+import { contactLink, sectionLinks } from "@/lib/contact";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-night pb-28 text-white md:pb-10">
+  <div class="container-page flex flex-col gap-6 pt-10">
+    <BrandLogo />
+    <p class="max-w-md text-sm leading-relaxed text-night-muted">{business.description}</p>
+
+    <nav aria-label="Pie de página">
+      <ul class="flex flex-wrap gap-x-5 gap-y-1">
+        {
+          sectionLinks.map((link) => (
+            <li>
+              <a href={link.href} class="inline-flex min-h-11 items-center text-sm font-semibold">
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <ul class="flex gap-2.5" aria-label="Redes sociales">
+      {
+        business.socials.map((social) => (
+          <li>
+            <a
+              href={social.href}
+              rel="noopener"
+              target="_blank"
+              class="inline-flex size-11 items-center justify-center rounded-full border border-white/20 hover:border-cyan"
+            >
+              <Icon name={social.icon} size={20} />
+              <span class="sr-only">{social.label}</span>
+            </a>
+          </li>
+        ))
+      }
+      <li>
+        <a
+          href={contactLink(business.messages.general)}
+          rel="noopener"
+          target="_blank"
+          class="inline-flex size-11 items-center justify-center rounded-full border border-white/20 hover:border-cyan"
+        >
+          <Icon name="message-circle" size={20} />
+          <span class="sr-only">WhatsApp</span>
+        </a>
+      </li>
+    </ul>
+
+    <p class="text-xs text-night-muted">© {year} Leader Group. Todos los derechos reservados.</p>
+  </div>
+</footer>

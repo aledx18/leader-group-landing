@@ -1,0 +1,52 @@
+---
+import Icon from "@/components/Icon.astro";
+import { business } from "@/config/business";
+import { contactLink } from "@/lib/contact";
+
+const steps = [
+  "Envía fotos y kilometraje",
+  "Recibe tu cotización en 24 h",
+  "Elige tu próximo auto y entrégalo",
+];
+---
+
+<section id="canje" class="bg-night py-12 text-white md:py-20" aria-labelledby="trade-title">
+  <div class="container-page grid gap-6 md:grid-cols-2 md:items-center md:gap-12">
+    <div class="flex flex-col gap-2.5">
+      <p class="eyebrow text-cyan">Plan canje</p>
+      <h2 id="trade-title" class="font-display text-[30px] leading-[1.05] font-black md:text-4xl">
+        Tu auto actual vale como parte de pago.
+      </h2>
+      <p class="text-[15px] leading-relaxed text-night-muted">
+        Envíanos fotos y datos por WhatsApp y te pasamos una cotización en menos de 24 horas.
+      </p>
+    </div>
+
+    <div class="flex flex-col gap-6">
+      <ol class="flex flex-col">
+        {
+          steps.map((step, index) => (
+            <li class="flex items-center gap-4 border-b border-white/10 py-3.5 last:border-b-0">
+              <span
+                class="w-12 shrink-0 font-display text-[28px] leading-none font-black text-cyan"
+                aria-hidden="true"
+              >
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <span class="font-semibold">{step}</span>
+            </li>
+          ))
+        }
+      </ol>
+      <a
+        href={contactLink(business.messages.tradeIn)}
+        rel="noopener"
+        target="_blank"
+        class="btn bg-brand text-white hover:bg-brand-strong"
+      >
+        <Icon name="message-circle" size={20} />
+        Cotizar mi usado
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,42 @@
+---
+import { business } from "@/config/business";
+import { formatPrice } from "@/lib/format";
+
+const f = business.financing;
+---
+
+<section id="financiacion" class="bg-mist py-12 md:py-20" aria-labelledby="financing-title">
+  <div class="container-page grid gap-5 md:grid-cols-2 md:items-center md:gap-12">
+    <div class="flex flex-col gap-2.5">
+      <p class="eyebrow text-brand-strong">Financiación</p>
+      <h2 id="financing-title" class="font-display text-[28px] leading-[1.08] font-black md:text-4xl">
+        Llévatelo con el {f.downPaymentPercent}% y el resto en cuotas.
+      </h2>
+    </div>
+
+    <div class="flex flex-col gap-4">
+      <div class="flex flex-col gap-4 rounded-xl border border-line bg-paper p-5">
+        <p class="text-[13px] font-semibold text-ink-soft">
+          Ejemplo: {f.example} · {formatPrice(f.price, f.currency)}
+        </p>
+        <dl class="flex flex-col gap-3 text-[15px]">
+          <div class="flex items-center justify-between gap-4">
+            <dt class="text-ink-soft">Entrega inicial</dt>
+            <dd class="font-semibold">{formatPrice(f.downPayment, f.currency)}</dd>
+          </div>
+          <div class="flex items-center justify-between gap-4">
+            <dt class="text-ink-soft">Plazo</dt>
+            <dd class="font-semibold">{f.installments} cuotas fijas</dd>
+          </div>
+          <div class="flex items-end justify-between gap-4 border-t border-line pt-4">
+            <dt class="font-semibold">Cuota desde</dt>
+            <dd class="font-display text-[32px] leading-none font-black">
+              {formatPrice(f.installment, f.currency)}
+            </dd>
+          </div>
+        </dl>
+      </div>
+      <p class="text-[13px] leading-relaxed text-ink-soft">{f.disclaimer}</p>
+    </div>
+  </div>
+</section>

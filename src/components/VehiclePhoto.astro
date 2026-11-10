@@ -1,0 +1,53 @@
+---
+import { Image } from "astro:assets";
+import { resolvePhoto } from "@/lib/stock/photos";
+
+interface Props {
+  /** Contract photo reference (remote URL or fixture reference); undefined shows a placeholder. */
+  photo: string | undefined;
+  alt: string;
+  /** Responsive widths and sizes for srcset. */
+  widths?: number[];
+  sizes: string;
+  loading?: "eager" | "lazy";
+  fetchpriority?: "high" | "auto";
+  class?: string;
+}
+
+const {
+  photo,
+  alt,
+  widths = [400, 640, 960, 1280],
+  sizes,
+  loading = "lazy",
+  fetchpriority = "auto",
+  class: className,
+} = Astro.props;
+
+const src = resolvePhoto(photo);
+---
+
+{
+  typeof src === "string" ? (
+    <Image
+      src={src}
+      alt={alt}
+      inferSize
+      widths={widths}
+      sizes={sizes}
+      loading={loading}
+      fetchpriority={fetchpriority}
+      class={className}
+    />
+  ) : (
+    <Image
+      src={src}
+      alt={alt}
+      widths={widths.filter((w) => w <= src.width)}
+      sizes={sizes}
+      loading={loading}
+      fetchpriority={fetchpriority}
+      class={className}
+    />
+  )
+}

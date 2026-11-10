@@ -1,13 +1,32 @@
 ---
+import FloatingWhatsApp from "@/components/FloatingWhatsApp.astro";
+import Footer from "@/components/Footer.astro";
+import Header from "@/components/Header.astro";
+import Financing from "@/components/home/Financing.astro";
+import Hero from "@/components/home/Hero.astro";
+import StockSection from "@/components/home/StockSection.astro";
+import Testimonial from "@/components/home/Testimonial.astro";
+import TradeIn from "@/components/home/TradeIn.astro";
+import Visit from "@/components/home/Visit.astro";
+import WhyLeader from "@/components/home/WhyLeader.astro";
+import { business } from "@/config/business";
 import Layout from "@/layouts/Layout.astro";
+import { contactLink } from "@/lib/contact";
 import { getStock } from "@/lib/stock";
 
 const { vehicles } = await getStock();
+
 ---
 
-<Layout bodyClass="bg-night text-white">
-  <section class="container-page py-16">
-    <h1 class="font-display text-4xl font-black">Leader Group</h1>
-    <p>{vehicles.length} autos disponibles</p>
-  </section>
+<Layout>
+  <Header slot="header" />
+  <Hero vehicleCount={vehicles.length} />
+  <StockSection vehicles={vehicles} />
+  <WhyLeader />
+  <TradeIn />
+  <Financing />
+  <Testimonial />
+  <Visit />
+  <Footer slot="footer" />
+  <FloatingWhatsApp href={contactLink(business.messages.general)} />
 </Layout>
