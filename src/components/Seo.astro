@@ -1,0 +1,163 @@
+---
+import { site } from "@/config/site";
+
+type OgType = "website" | "article" | "product" | "profile";
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** Path under public/ or absolute URL. */
+  image?: string;
+  imageAlt?: string;
+  /** Social image dimensions when `image` is not the default one. */
+  imageWidth?: number;
+  imageHeight?: number;
+  /** Pathname or absolute URL for the canonical. Defaults to the current page path. */
+  url?: string;
+  type?: OgType;
+  /** When true: noindex, nofollow (404, previews). */
+  noindex?: boolean;
+  /** Extra JSON-LD nodes merged into @graph (AutoDealer, Car, BreadcrumbList, ...). */
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  /** Overrides the default Organization node (for example with an AutoDealer node). */
+  organization?: Record<string, unknown>;
+}
+
+const {
+  title = site.title,
+  description = site.description,
+  image = site.image,
+  imageAlt = site.imageAlt,
+  imageWidth = site.imageWidth,
+  imageHeight = site.imageHeight,
+  url = Astro.url.pathname,
+  type = "website",
+  noindex = false,
+  jsonLd: extraJsonLd,
+  organization,
+} = Astro.props;
+
+const siteOrigin = site.url.replace(/\/$/, "");
+const canonical = new URL(url, `${siteOrigin}/`).href;
+const imageUrl = image.startsWith("http") ? image : new URL(image, `${siteOrigin}/`).href;
+const logoUrl = new URL("/icon-512.png", `${siteOrigin}/`).href;
+
+const imageExt = (image.split("?")[0] ?? "").toLowerCase().split(".").pop() ?? "";
+const imageType =
+  imageExt === "png"
+    ? "image/png"
+    : imageExt === "jpg" || imageExt === "jpeg"
+      ? "image/jpeg"
+      : imageExt === "avif"
+        ? "image/avif"
+        : "image/webp";
+
+const ogLocale = site.locale.replace("-", "_");
+const schemaLocale = site.locale.replace("_", "-");
+
+const ogTitle = site.ogTitle ?? title;
+const ogDescription = site.ogDescription ?? description;
+
+const robots = noindex
+  ? "noindex, nofollow"
+  : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
+
+const extra = extraJsonLd ? (Array.isArray(extraJsonLd) ? extraJsonLd : [extraJsonLd]) : [];
+
+const organizationNode = organization ?? {
+  "@type": "Organization",
+  "@id": `${siteOrigin}/#organization`,
+  name: site.name,
+  url: `${siteOrigin}/`,
+  logo: { "@type": "ImageObject", url: logoUrl, width: 512, height: 512 },
+  ...(site.email
+    ? {
+        contactPoint: {
+          "@type": "ContactPoint",
+          email: site.email,
+          contactType: "customer support",
+        },
+      }
+    : {}),
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${siteOrigin}/#website`,
+      url: `${siteOrigin}/`,
+      name: site.name,
+      description: site.description,
+      inLanguage: schemaLocale,
+      publisher: { "@id": `${siteOrigin}/#organization` },
+    },
+    organizationNode,
+    {
+      "@type": "WebPage",
+      "@id": `${canonical}#webpage`,
+      url: canonical,
+      name: title,
+      description,
+      isPartOf: { "@id": `${siteOrigin}/#website` },
+      primaryImageOfPage: {
+        "@type": "ImageObject",
+        url: imageUrl,
+        width: imageWidth,
+        height: imageHeight,
+      },
+      inLanguage: schemaLocale,
+    },
+    ...extra,
+  ],
+};
+
+// Prevent "</script>" inside string values from closing the JSON-LD block.
+const jsonLdHtml = JSON.stringify(jsonLd).replace(/</g, "\\u003c");
+---
+
+<link rel="icon" href="/favicon.ico" sizes="48x48" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<title>{title}</title>
+<meta name="description" content={description} />
+{site.keywords ? <meta name="keywords" content={site.keywords} /> : null}
+<meta name="robots" content={robots} />
+<meta name="theme-color" content={site.themeColor} />
+<link rel="canonical" href={canonical} />
+{
+  site.googleSiteVerification ? (
+    <meta name="google-site-verification" content={site.googleSiteVerification} />
+  ) : null
+}
+
+{/* Open Graph */}
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content={site.name} />
+<meta property="og:locale" content={ogLocale} />
+{site.localeAlternates.map((locale) => <meta property="og:locale:alternate" content={locale.replace("-", "_")} />)}
+<meta property="og:title" content={ogTitle} />
+<meta property="og:description" content={ogDescription} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:image:secure_url" content={imageUrl} />
+<meta property="og:image:type" content={imageType} />
+<meta property="og:image:width" content={String(imageWidth)} />
+<meta property="og:image:height" content={String(imageHeight)} />
+<meta property="og:image:alt" content={imageAlt} />
+
+{/* Twitter / X */}
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={ogTitle} />
+<meta name="twitter:description" content={ogDescription} />
+<meta name="twitter:image" content={imageUrl} />
+<meta name="twitter:image:alt" content={imageAlt} />
+{site.twitter ? <meta name="twitter:site" content={`@${site.twitter.replace(/^@/, "")}`} /> : null}
+
+{/* App / PWA hints */}
+<meta name="application-name" content={site.name} />
+<meta name="apple-mobile-web-app-title" content={site.name} />
+<meta name="mobile-web-app-capable" content="yes" />
+
+<script type="application/ld+json" is:inline set:html={jsonLdHtml} />

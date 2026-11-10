@@ -1,0 +1,45 @@
+---
+import type { ComponentProps } from "astro/types";
+import Seo from "@/components/Seo.astro";
+import "@/styles/global.css";
+
+type SeoProps = ComponentProps<typeof Seo>;
+
+interface Props extends SeoProps {
+  /** Extra classes for <body> (page background). */
+  bodyClass?: string;
+}
+
+const { bodyClass, ...seo } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <link
+      rel="preload"
+      href="/fonts/archivo-latin-900.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <Seo {...seo} />
+  </head>
+  <body class:list={["min-h-dvh", bodyClass]}>
+    <a
+      href="#contenido"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-md focus:bg-paper focus:px-4 focus:py-3 focus:text-ink"
+    >
+      Saltar al contenido
+    </a>
+    <slot name="header" />
+    <main id="contenido">
+      <slot />
+    </main>
+    <slot name="footer" />
+  </body>
+</html>
