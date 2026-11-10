@@ -14,8 +14,8 @@ const initials = t.author
 
 <section class="bg-tint py-12 md:py-20" aria-label="Opinión de un cliente">
   <figure class="container-page flex max-w-3xl flex-col gap-5">
-    <div class="flex gap-1 text-signal" role="img" aria-label="5 de 5 estrellas">
-      {Array.from({ length: 5 }, () => <Icon name="star" size={22} filled />)}
+    <div class="flex gap-1 text-signal" role="img" aria-label={`${t.stars} de 5 estrellas`}>
+      {Array.from({ length: t.stars }, () => <Icon name="star" size={22} filled />)}
     </div>
     <blockquote>
       <p class="font-display text-[22px] leading-snug font-bold md:text-3xl">“{t.quote}”</p>

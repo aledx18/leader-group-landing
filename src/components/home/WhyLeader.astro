@@ -1,28 +1,8 @@
 ---
-import Icon, { type IconName } from "@/components/Icon.astro";
+import Icon from "@/components/Icon.astro";
+import { business } from "@/config/business";
 
-const reasons: { icon: IconName; title: string; text: string }[] = [
-  {
-    icon: "shield-check",
-    title: "Peritaje de 120 puntos",
-    text: "Cada auto pasa por mecánica, chapa y electrónica antes de publicarse.",
-  },
-  {
-    icon: "file-check",
-    title: "Papeles al día",
-    text: "Verificamos dominio, multas e informes. Transferencia en el día.",
-  },
-  {
-    icon: "badge-check",
-    title: "Garantía escrita",
-    text: "3 meses de garantía mecánica en motor y caja en todas las unidades.",
-  },
-  {
-    icon: "key",
-    title: "Prueba sin compromiso",
-    text: "Agenda tu test drive por WhatsApp y maneja antes de decidir.",
-  },
-];
+const reasons = business.reasons;
 ---
 
 <section class="bg-paper py-12 md:py-20" aria-labelledby="why-title">

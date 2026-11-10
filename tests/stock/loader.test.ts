@@ -132,14 +132,62 @@ describe("loadStock", () => {
     ).rejects.toThrow(/array/);
   });
 
-  it("does not leak the api key in error messages", async () => {
-    const fetchMock = vi.fn(async () => new Response("bad", { status: 500 }));
+  it("throws when the url is set and the body is not valid JSON", async () => {
+    const fetchMock = vi.fn(async () => new Response("<html>", { status: 200 }));
+    await expect(
+      loadStock({ url: "https://api.example.com/stock", fixture, fetch: fetchMock }),
+    ).rejects.toThrow(/not valid JSON/);
+  });
+
+  it("throws when the endpoint returns records but none of them is valid", async () => {
+    const fetchMock = vi.fn(async () =>
+      jsonResponse([
+        { id: "a", title: "Renamed field", price: 1000, currency: "USD" },
+        { id: "b", name: "No price", currency: "USD" },
+      ]),
+    );
+    await expect(
+      loadStock({ url: "https://api.example.com/stock", fixture, fetch: fetchMock }),
+    ).rejects.toThrow(/none of the 2 records/);
+  });
+
+  it("aborts the request with a timeout signal", async () => {
+    const fetchMock = vi.fn(async () => jsonResponse(remote));
+    await loadStock({ url: "https://api.example.com/stock", fixture, fetch: fetchMock });
+    const [, init] = fetchMock.mock.calls[0] as unknown as [string, RequestInit];
+    expect(init.signal).toBeInstanceOf(AbortSignal);
+  });
+
+  it("keeps the original network error as the cause", async () => {
+    const original = new TypeError("fetch failed");
+    const fetchMock = vi.fn(async () => {
+      throw original;
+    });
     const error = await loadStock({
       url: "https://api.example.com/stock",
+      fixture,
+      fetch: fetchMock,
+    }).then(
+      () => undefined,
+      (e: unknown) => e as Error,
+    );
+    expect(error?.cause).toBe(original);
+  });
+
+  it("reports the endpoint without its query string or the api key", async () => {
+    const fetchMock = vi.fn(async () => new Response("bad", { status: 500 }));
+    const error = await loadStock({
+      url: "https://api.example.com/stock?token=url-secret",
       apiKey: "super-secret",
       fixture,
       fetch: fetchMock,
-    }).catch((e: unknown) => e as Error);
-    expect(String(error)).not.toContain("super-secret");
+    }).then(
+      () => undefined,
+      (e: unknown) => e as Error,
+    );
+    expect(error).toBeInstanceOf(Error);
+    expect(error?.message).toContain("https://api.example.com/stock");
+    expect(error?.message).not.toContain("url-secret");
+    expect(error?.message).not.toContain("super-secret");
   });
 });

@@ -60,7 +60,7 @@ export interface CarNodeInput {
   vehicle: Vehicle;
   /** Absolute canonical URL of the vehicle page. */
   pageUrl: string;
-  /** Absolute URLs of the optimized photos, cover first. */
+  /** Absolute URLs of the optimized photos, cover first. Empty omits `image`. */
   images: readonly string[];
   siteUrl: string;
 }
@@ -73,7 +73,7 @@ export function carNode({ vehicle, pageUrl, images, siteUrl }: CarNodeInput): Js
     "@id": `${pageUrl}#vehicle`,
     name: vehicle.name,
     url: pageUrl,
-    image: [...images],
+    ...(images.length > 0 ? { image: [...images] } : {}),
     itemCondition: condition,
     offers: {
       "@type": "Offer",

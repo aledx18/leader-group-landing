@@ -12,9 +12,9 @@ export function directionsLink(): string {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 }
 
-/** tel: link for the business phone. */
+/** tel: link for the phone number shown as `business.phoneDisplay`. */
 export function phoneLink(): string {
-  return `tel:+${business.whatsapp.replace(/\D/g, "")}`;
+  return `tel:+${business.phoneDisplay.replace(/\D/g, "")}`;
 }
 
 /** Home sections, used by the header menu and the footer. */

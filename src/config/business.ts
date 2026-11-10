@@ -51,8 +51,43 @@ export const business = {
     { value: "4.8 ★", label: "en Google" },
   ],
 
+  /** TODO(real data): service claims (inspection, paperwork, warranty, test drive). */
+  reasons: [
+    {
+      icon: "shield-check",
+      title: "Peritaje de 120 puntos",
+      text: "Cada auto pasa por mecánica, chapa y electrónica antes de publicarse.",
+    },
+    {
+      icon: "file-check",
+      title: "Papeles al día",
+      text: "Verificamos dominio, multas e informes. Transferencia en el día.",
+    },
+    {
+      icon: "badge-check",
+      title: "Garantía escrita",
+      text: "3 meses de garantía mecánica en motor y caja en todas las unidades.",
+    },
+    {
+      icon: "key",
+      title: "Prueba sin compromiso",
+      text: "Agenda tu test drive por WhatsApp y maneja antes de decidir.",
+    },
+  ],
+
+  /** TODO(real data): trade-in promise (quote time). */
+  tradeIn: {
+    lead: "Envíanos fotos y datos por WhatsApp y te pasamos una cotización en menos de 24 horas.",
+    steps: [
+      "Envía fotos y kilometraje",
+      "Recibe tu cotización en 24 h",
+      "Elige tu próximo auto y entrégalo",
+    ],
+  },
+
   /** TODO(real data): customer testimonial (shown as text only, never as Review JSON-LD). */
   testimonial: {
+    stars: 5,
     quote:
       "Me mandaron fotos, video y el informe del auto antes de ir. Llegué, lo probé y en dos horas me fui manejando. Cero sorpresas.",
     author: "Martín G.",

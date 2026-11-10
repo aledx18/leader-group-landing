@@ -5,6 +5,7 @@ import Header from "@/components/Header.astro";
 import Icon from "@/components/Icon.astro";
 import VehicleCard from "@/components/VehicleCard.astro";
 import VehicleGallery from "@/components/VehicleGallery.astro";
+import { business } from "@/config/business";
 import { site } from "@/config/site";
 import Layout from "@/layouts/Layout.astro";
 import { contactLink } from "@/lib/contact";
@@ -34,16 +35,15 @@ const pageUrl = new URL(path, `${site.url}/`).href;
 const price = formatPrice(vehicle.price, vehicle.currency);
 const whatsapp = contactLink(vehicleInquiryMessage(vehicle.name, pageUrl));
 
-const title = `${vehicle.name} | ${price} | Leader Group`;
-const description = `${vehicle.name} usado en venta por ${price} de contado en Leader Group. Revisado, con papeles al día y precio claro. Consulta por WhatsApp.`;
+const title = `${vehicle.name} | ${price} | ${business.name}`;
+const description = `${vehicle.name} usado en venta por ${price} de contado en ${business.name}. Consulta por WhatsApp y coordina una visita.`;
 
-// Social card: cover cropped to 1200x630 JPEG; JSON-LD: every photo at 1280px.
+// Social card: cover (or the placeholder) cropped to 1200x630 JPEG.
+// JSON-LD: every real photo at 1280px; the placeholder is never published as a photo of the car.
 const absolute = (src: string) => new URL(src, `${site.url}/`).href;
 const ogImage = await optimizedPhoto(vehicle.photos[0], { width: 1200, height: 630, format: "jpg" });
 const jsonLdImages = await Promise.all(
-  (vehicle.photos.length > 0 ? vehicle.photos : [undefined]).map(
-    async (photo) => absolute((await optimizedPhoto(photo, { width: 1280 })).src),
-  ),
+  vehicle.photos.map(async (photo) => absolute((await optimizedPhoto(photo, { width: 1280 })).src)),
 );
 
 const jsonLd = [
@@ -103,20 +103,17 @@ const otherSizes =
       </a>
 
       <ul class="flex flex-col rounded-xl border border-line bg-paper px-4">
-        <li class="flex gap-3 border-b border-line py-3.5">
-          <Icon name="shield-check" size={20} class="mt-0.5 shrink-0 text-brand" />
-          <span class="text-sm text-ink-soft">
-            <strong class="block text-[15px] text-ink">Peritaje de 120 puntos</strong>
-            Mecánica, chapa y electrónica revisadas antes de publicarse.
-          </span>
-        </li>
-        <li class="flex gap-3 border-b border-line py-3.5">
-          <Icon name="file-check" size={20} class="mt-0.5 shrink-0 text-brand" />
-          <span class="text-sm text-ink-soft">
-            <strong class="block text-[15px] text-ink">Papeles al día</strong>
-            Verificamos dominio, multas e informes.
-          </span>
-        </li>
+        {
+          business.reasons.slice(0, 2).map((reason) => (
+            <li class="flex gap-3 border-b border-line py-3.5">
+              <Icon name={reason.icon} size={20} class="mt-0.5 shrink-0 text-brand" />
+              <span class="text-sm text-ink-soft">
+                <strong class="block text-[15px] text-ink">{reason.title}</strong>
+                {reason.text}
+              </span>
+            </li>
+          ))
+        }
         <li class="flex gap-3 py-3.5">
           <Icon name="key" size={20} class="mt-0.5 shrink-0 text-brand" />
           <span class="text-sm text-ink-soft">

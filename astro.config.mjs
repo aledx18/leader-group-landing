@@ -9,9 +9,17 @@ const env = loadEnv(process.env.NODE_ENV ?? "production", process.cwd(), "");
 /**
  * Canonical origin. Single source of truth for canonical URLs, Open Graph,
  * JSON-LD, sitemap and robots.txt. Set SITE_URL in the environment (Vercel)
- * once the domain is purchased; the default is a placeholder.
+ * once the domain is purchased. Until then a Vercel build uses the project's
+ * production URL, and anything else falls back to a placeholder.
  */
-const SITE_URL = env.SITE_URL || "https://leadergroup.example";
+const SITE_URL =
+  env.SITE_URL ||
+  (env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "https://leadergroup.example");
+if (!env.SITE_URL && env.VERCEL_ENV === "production") {
+  console.warn(`[site] SITE_URL is not set; canonical URLs use ${SITE_URL}.`);
+}
 
 /**
  * Remote photo hosts astro:assets may download and optimize at build time:

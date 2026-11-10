@@ -17,8 +17,8 @@ Both are **server-only** (`astro:env/server`, `access: "secret"`). Never rename 
 Behaviour (see `src/lib/stock/loader.ts`):
 
 - `STOCK_API_URL` unset or blank: the fixture is used.
-- `STOCK_API_URL` set and the request fails (network error, non-2xx status, invalid JSON, body
-  that is not an array): **the build fails**. The site never publishes an empty or stale stock
+- `STOCK_API_URL` set and the request fails (network error, no answer within 20 seconds, non-2xx
+  status, invalid JSON, body that is not an array, or a non-empty list where no record is valid): **the build fails**. The site never publishes an empty or stale stock
   silently; the previous deployment stays live.
 - `STOCK_API_URL` set and the endpoint returns `[]`: the site builds with an empty stock and
   shows the "no vehicles" state that invites contact by WhatsApp.

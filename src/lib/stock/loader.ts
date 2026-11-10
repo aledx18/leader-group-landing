@@ -22,8 +22,9 @@ export interface StockResult {
 /**
  * Loads the stock at build time.
  * - No url: local fixture (development, previews before the endpoint exists).
- * - Url set: fetch it; any network error, non-2xx status or non-array body throws,
- *   so the build fails instead of publishing an empty or stale stock.
+ * - Url set: fetch it; a network error, timeout, non-2xx status, non-array body or a
+ *   non-empty list with no valid record throws, so the build fails instead of
+ *   publishing an empty or stale stock.
  */
 export async function loadStock(options: LoadStockOptions): Promise<StockResult> {
   const url = options.url?.trim();
@@ -44,10 +45,10 @@ export async function loadStock(options: LoadStockOptions): Promise<StockResult>
   const endpoint = describeEndpoint(url);
   let response: Response;
   try {
-    response = await doFetch(url, { headers });
+    response = await doFetch(url, { headers, signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS) });
   } catch (error) {
     const reason = error instanceof Error ? error.message : String(error);
-    throw new Error(`Stock request to ${endpoint} failed: ${reason}`);
+    throw new Error(`Stock request to ${endpoint} failed: ${reason}`, { cause: error });
   }
 
   if (!response.ok) {
@@ -62,8 +63,19 @@ export async function loadStock(options: LoadStockOptions): Promise<StockResult>
   }
 
   const vehicles = normalizeStock(payload);
-  return { vehicles, source: "endpoint", skipped: countSkipped(payload, vehicles) };
+  const skipped = countSkipped(payload, vehicles);
+  // An empty list is a real empty stock; records that all fail validation mean the
+  // endpoint contract changed, and publishing zero vehicles would hide it.
+  if (vehicles.length === 0 && skipped > 0) {
+    throw new Error(
+      `Stock response from ${endpoint} is unusable: none of the ${skipped} records matches the contract (see docs/stock-endpoint.md).`,
+    );
+  }
+  return { vehicles, source: "endpoint", skipped };
 }
+
+/** Fail the build fast instead of waiting on a stalled endpoint. */
+const REQUEST_TIMEOUT_MS = 20_000;
 
 function countSkipped(payload: unknown, vehicles: Vehicle[]): number {
   return Array.isArray(payload) ? payload.length - vehicles.length : 0;

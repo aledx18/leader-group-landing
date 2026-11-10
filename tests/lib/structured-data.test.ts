@@ -124,3 +124,23 @@ describe("breadcrumbNode", () => {
     });
   });
 });
+
+describe("carNode without photos", () => {
+  it("omits the image property instead of publishing a placeholder", () => {
+    const node = carNode({
+      vehicle: {
+        id: "7c1e2a90",
+        slug: "toyota-corolla-xei-2-0-7c1e2a",
+        name: "Toyota Corolla XEI 2.0",
+        price: 18900,
+        currency: "USD",
+        photos: [],
+      },
+      pageUrl: "https://leadergroup.example/autos/toyota-corolla-xei-2-0-7c1e2a/",
+      images: [],
+      siteUrl: "https://leadergroup.example/",
+    });
+    expect(node).not.toHaveProperty("image");
+    expect(node.name).toBe("Toyota Corolla XEI 2.0");
+  });
+});

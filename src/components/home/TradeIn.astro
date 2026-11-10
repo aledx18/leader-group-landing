@@ -3,11 +3,7 @@ import Icon from "@/components/Icon.astro";
 import { business } from "@/config/business";
 import { contactLink } from "@/lib/contact";
 
-const steps = [
-  "Envía fotos y kilometraje",
-  "Recibe tu cotización en 24 h",
-  "Elige tu próximo auto y entrégalo",
-];
+const { steps, lead } = business.tradeIn;
 ---
 
 <section id="canje" class="bg-night py-12 text-white md:py-20" aria-labelledby="trade-title">
@@ -18,7 +14,7 @@ const steps = [
         Tu auto actual vale como parte de pago.
       </h2>
       <p class="text-[15px] leading-relaxed text-night-muted">
-        Envíanos fotos y datos por WhatsApp y te pasamos una cotización en menos de 24 horas.
+        {lead}
       </p>
     </div>
 

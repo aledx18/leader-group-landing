@@ -55,8 +55,9 @@ const imageType =
 const ogLocale = site.locale.replace("-", "_");
 const schemaLocale = site.locale.replace("_", "-");
 
-const ogTitle = site.ogTitle ?? title;
-const ogDescription = site.ogDescription ?? description;
+// Site-wide social text only replaces the site defaults, never a page's own props.
+const ogTitle = Astro.props.title ? title : (site.ogTitle ?? title);
+const ogDescription = Astro.props.description ? description : (site.ogDescription ?? description);
 
 const robots = noindex
   ? "noindex, nofollow"
