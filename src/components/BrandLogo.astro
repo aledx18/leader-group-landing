@@ -1,0 +1,33 @@
+---
+import { Image } from "astro:assets";
+import logoMark from "@/assets/brand/logo-mark.png";
+
+interface Props {
+  /** Render as a link to the home page (header) or as plain content (footer). */
+  href?: string;
+  class?: string;
+}
+
+const { href, class: className } = Astro.props;
+const Tag = href ? "a" : "div";
+---
+
+<Tag
+  href={href}
+  class:list={["inline-flex min-h-11 items-center gap-3 text-white", className]}
+  aria-label={href ? "Leader Group, ir al inicio" : undefined}
+>
+  <Image
+    src={logoMark}
+    alt=""
+    width={96}
+    height={17}
+    densities={[1, 2]}
+    loading="eager"
+    class="h-[17px] w-24"
+  />
+  <span class="flex flex-col leading-none" aria-hidden={href ? "true" : undefined}>
+    <span class="font-display text-[17px] font-black tracking-[0.12em]">LEADER</span>
+    <span class="mt-1 text-[9px] font-semibold tracking-[0.28em] text-white/70">GROUP · AUTOS</span>
+  </span>
+</Tag>
