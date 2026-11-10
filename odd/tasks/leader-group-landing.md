@@ -25,7 +25,7 @@ Package manager: bun. Checks: `bun run test` (vitest), `bun run check` (astro ch
 - [x] T3 — Stock data layer, fixture, tests, endpoint doc (S7). Route: delegated. Commit: `acbcb96`
 - [x] T4 — Home page sections with placeholders (S2, S3, S6, S8). Route: delegated. Commit: `c71cb13`
 - [x] T5 — Vehicle pages with structured data (S5). Route: delegated. Commit: `aac35f0`
-- [ ] T6 — README, deploy notes, final checks (S9, S10). Route: delegated. Commit: —
+- [x] T6 — README, deploy notes, final checks (S9, S10). Route: delegated. Commit: `c9391e4`
 
 ## Log
 
@@ -39,3 +39,4 @@ Package manager: bun. Checks: `bun run test` (vitest), `bun run check` (astro ch
 - L8 (2026-11-10): T3 done in `acbcb96`: allowlist loader with injected fetch, fixture fallback, build fails when the endpoint fails (observed exit 1 with an unreachable `STOCK_API_URL`); RED observed before implementation (missing modules), then 30 tests green.
 - L9 (2026-11-10): T4 done in `c71cb13`: home sections in reference order without search, chips, "Ver todos" or stock button; count from stock length; business data in `src/config/business.ts` (TODO(real data)); AutoDealer JSON-LD without ratings. Layouts checked with 0, 1, 2, 4 and 6 vehicles at 390px (mock endpoint); no horizontal scroll at 320px.
 - L10 (2026-11-10): T5 done in `aac35f0`: `/autos/<slug>/` per vehicle with own title, description, canonical, 1200x630 cover as og:image, `Car` + `Offer` + `BreadcrumbList` JSON-LD (RED observed, 42 tests green), gallery, sticky mobile WhatsApp bar; sitemap lists home and the 4 fixture pages.
+- L11 (2026-11-10): T6 done in `c9391e4`: README (commands, env vars, placeholders, Vercel deploy, deploy hook refresh) and `vercel.json`. Final checks: `bun run test` 42 passed, `bun run check` 0 errors, `bun run build` 6 pages. Not pushed; native review per work-unit commit pending.
