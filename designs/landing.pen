@@ -1,0 +1,2594 @@
+{
+  "version": "2.21",
+  "children": [
+    {
+      "type": "frame",
+      "id": "RidcR",
+      "x": 0,
+      "y": 600,
+      "name": "Leader Group — Landing Mobile",
+      "clip": true,
+      "width": 390,
+      "fill": "$bg",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "y2BJPU",
+          "name": "Hero",
+          "width": "fill_container",
+          "height": 720,
+          "fill": "$dark",
+          "layout": "vertical",
+          "justifyContent": "space_between",
+          "children": [
+            {
+              "type": "frame",
+              "id": "uQgne",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 0,
+              "name": "Hero Image",
+              "metadata": {
+                "type": "unsplash",
+                "username": "samuele_piccarini",
+                "link": "https://unsplash.com/@samuele_piccarini",
+                "author": "Samuele Errico Piccarini"
+              },
+              "width": 390,
+              "height": 720,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "https://images.unsplash.com/photo-1485291571150-772bcfc10da5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3OTM2NDQzOTR8&ixlib=rb-4.1.0&q=80&w=1080",
+                "mode": "cover"
+              }
+            },
+            {
+              "type": "frame",
+              "id": "ps7HU",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 0,
+              "name": "Hero Overlay",
+              "width": 390,
+              "height": 720,
+              "fill": {
+                "type": "gradient",
+                "gradientType": "linear",
+                "enabled": true,
+                "rotation": 180,
+                "size": {
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "#0E1013B3",
+                    "position": 0
+                  },
+                  {
+                    "color": "#0E101333",
+                    "position": 0.35
+                  },
+                  {
+                    "color": "#0E1013F2",
+                    "position": 0.75
+                  },
+                  {
+                    "color": "#0E1013",
+                    "position": 1
+                  }
+                ]
+              }
+            },
+            {
+              "type": "frame",
+              "id": "PcKz7",
+              "name": "Header",
+              "width": "fill_container",
+              "padding": [
+                16,
+                20
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "LotMH",
+                  "name": "Logo",
+                  "gap": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "O6n4L",
+                      "name": "Logo Mark",
+                      "width": 32,
+                      "height": 32,
+                      "fill": "$accent",
+                      "cornerRadius": 4,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "BpIOY",
+                          "name": "Logo Letter",
+                          "fill": "#FFFFFF",
+                          "content": "L",
+                          "fontFamily": "$font-head",
+                          "fontSize": 20,
+                          "fontWeight": "900"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "ZCwO7",
+                      "name": "Logo Text",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Tp7Qi",
+                          "name": "Logo Name",
+                          "fill": "#FFFFFF",
+                          "content": "LEADER",
+                          "lineHeight": 1,
+                          "fontFamily": "$font-head",
+                          "fontSize": 17,
+                          "fontWeight": "900",
+                          "letterSpacing": 1.5
+                        },
+                        {
+                          "type": "text",
+                          "id": "I5D6Fx",
+                          "name": "Logo Sub",
+                          "fill": "#FFFFFFB3",
+                          "content": "GROUP · AUTOS",
+                          "fontFamily": "$font-body",
+                          "fontSize": 9,
+                          "fontWeight": "600",
+                          "letterSpacing": 2
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Uk7Ur",
+                  "name": "Menu Button",
+                  "width": 44,
+                  "height": 44,
+                  "cornerRadius": 22,
+                  "stroke": "#FFFFFF40",
+                  "strokeWidth": 1,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "ZfGeP",
+                      "name": "Menu Icon",
+                      "width": 20,
+                      "height": 20,
+                      "icon": "menu",
+                      "library": "lucide",
+                      "fill": "#FFFFFF"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "zmieQ",
+              "name": "Hero Content",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 24,
+              "padding": [
+                0,
+                20,
+                32,
+                20
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "q3lIa",
+                  "name": "Hero Badge",
+                  "fill": "#FFFFFF1A",
+                  "cornerRadius": 100,
+                  "stroke": "#FFFFFF26",
+                  "strokeWidth": 1,
+                  "gap": 8,
+                  "padding": [
+                    6,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "ellipse",
+                      "id": "v4YduW",
+                      "name": "Live Dot",
+                      "fill": "#3DDC84",
+                      "width": 8,
+                      "height": 8
+                    },
+                    {
+                      "type": "text",
+                      "id": "NGEEY",
+                      "name": "Badge Text",
+                      "fill": "#FFFFFF",
+                      "content": "84 autos disponibles hoy",
+                      "fontFamily": "$font-body",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "BJpIB",
+                  "name": "Headline",
+                  "fill": "#FFFFFF",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Tu próximo auto, sin vueltas.",
+                  "lineHeight": 1,
+                  "fontFamily": "$font-head",
+                  "fontSize": 46,
+                  "fontWeight": "900",
+                  "letterSpacing": -1.2
+                },
+                {
+                  "type": "text",
+                  "id": "LS6hs",
+                  "name": "Subhead",
+                  "fill": "#FFFFFFCC",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Usados revisados, con papeles al día y precio claro desde el primer mensaje. Elige, pruébalo y llévatelo.",
+                  "lineHeight": 1.5,
+                  "fontFamily": "$font-body",
+                  "fontSize": 16,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "F1eJR",
+                  "name": "CTAs",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 10,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "VK2MN",
+                      "name": "Primary CTA",
+                      "width": "fill_container",
+                      "height": 56,
+                      "fill": "$accent",
+                      "cornerRadius": 8,
+                      "gap": 10,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n28j3",
+                          "name": "Label",
+                          "fill": "#FFFFFF",
+                          "content": "Ver autos disponibles",
+                          "fontFamily": "$font-body",
+                          "fontSize": 16,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "icon",
+                          "id": "J3j9of",
+                          "name": "Arrow",
+                          "width": 18,
+                          "height": 18,
+                          "icon": "arrow-right",
+                          "library": "lucide",
+                          "fill": "#FFFFFF"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "kuVSx",
+                      "name": "WhatsApp CTA",
+                      "width": "fill_container",
+                      "height": 56,
+                      "cornerRadius": 8,
+                      "stroke": "#FFFFFF4D",
+                      "strokeWidth": 1,
+                      "gap": 10,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "tlfW8",
+                          "name": "WA Icon",
+                          "width": 18,
+                          "height": 18,
+                          "icon": "message-circle",
+                          "library": "lucide",
+                          "fill": "#FFFFFF"
+                        },
+                        {
+                          "type": "text",
+                          "id": "pC5to",
+                          "name": "Label",
+                          "fill": "#FFFFFF",
+                          "content": "Consultar por WhatsApp",
+                          "fontFamily": "$font-body",
+                          "fontSize": 16,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "dzfgU",
+                  "name": "Hero Stats",
+                  "width": "fill_container",
+                  "stroke": "#FFFFFF26",
+                  "strokeWidth": {
+                    "top": 1
+                  },
+                  "padding": [
+                    20,
+                    0,
+                    0,
+                    0
+                  ],
+                  "justifyContent": "space_between",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "i2xhO",
+                      "name": "Stat autos entregados",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "dub2v",
+                          "name": "Value",
+                          "fill": "#FFFFFF",
+                          "content": "+1.200",
+                          "fontFamily": "$font-head",
+                          "fontSize": 22,
+                          "fontWeight": "800"
+                        },
+                        {
+                          "type": "text",
+                          "id": "l25BC",
+                          "name": "Label",
+                          "fill": "#FFFFFF99",
+                          "content": "autos entregados",
+                          "fontFamily": "$font-body",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "VDmoC",
+                      "name": "Stat en el mercado",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "npicx",
+                          "name": "Value",
+                          "fill": "#FFFFFF",
+                          "content": "12 años",
+                          "fontFamily": "$font-head",
+                          "fontSize": 22,
+                          "fontWeight": "800"
+                        },
+                        {
+                          "type": "text",
+                          "id": "Y6RV83",
+                          "name": "Label",
+                          "fill": "#FFFFFF99",
+                          "content": "en el mercado",
+                          "fontFamily": "$font-body",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "gG2ma",
+                      "name": "Stat en Google",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Y15Mnk",
+                          "name": "Value",
+                          "fill": "#FFFFFF",
+                          "content": "4.8 ★",
+                          "fontFamily": "$font-head",
+                          "fontSize": 22,
+                          "fontWeight": "800"
+                        },
+                        {
+                          "type": "text",
+                          "id": "C0zVqz",
+                          "name": "Label",
+                          "fill": "#FFFFFF99",
+                          "content": "en Google",
+                          "fontFamily": "$font-body",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "nds1g",
+          "name": "Buscador",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": [
+            28,
+            20,
+            8,
+            20
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "F6rZtv",
+              "name": "Search Title",
+              "fill": "$ink",
+              "content": "¿Qué estás buscando?",
+              "fontFamily": "$font-head",
+              "fontSize": 22,
+              "fontWeight": "800"
+            },
+            {
+              "type": "frame",
+              "id": "j6e9vF",
+              "name": "Search Input",
+              "width": "fill_container",
+              "height": 52,
+              "fill": "$surface",
+              "cornerRadius": 8,
+              "stroke": "$line",
+              "strokeWidth": 1,
+              "gap": 10,
+              "padding": [
+                0,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "dCK2B",
+                  "name": "Search Icon",
+                  "width": 20,
+                  "height": 20,
+                  "icon": "search",
+                  "library": "lucide",
+                  "fill": "$ink-soft"
+                },
+                {
+                  "type": "text",
+                  "id": "MDtSZ",
+                  "name": "Placeholder",
+                  "fill": "$ink-soft",
+                  "content": "Marca, modelo o año",
+                  "fontFamily": "$font-body",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ML1CO",
+              "name": "Category Chips",
+              "clip": true,
+              "width": "fill_container",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Vvz3y",
+                  "name": "Chip Todos",
+                  "height": 40,
+                  "fill": "$ink",
+                  "cornerRadius": 100,
+                  "padding": [
+                    0,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "cM8SC",
+                      "name": "Chip Label",
+                      "fill": "#FFFFFF",
+                      "content": "Todos",
+                      "fontFamily": "$font-body",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "l9U68J",
+                  "name": "Chip SUV",
+                  "height": 40,
+                  "fill": "$surface",
+                  "cornerRadius": 100,
+                  "stroke": "$line",
+                  "strokeWidth": 1,
+                  "padding": [
+                    0,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "WTWg3",
+                      "name": "Chip Label",
+                      "fill": "$ink",
+                      "content": "SUV",
+                      "fontFamily": "$font-body",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "OkBWW",
+                  "name": "Chip Sedán",
+                  "height": 40,
+                  "fill": "$surface",
+                  "cornerRadius": 100,
+                  "stroke": "$line",
+                  "strokeWidth": 1,
+                  "padding": [
+                    0,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "J9CSab",
+                      "name": "Chip Label",
+                      "fill": "$ink",
+                      "content": "Sedán",
+                      "fontFamily": "$font-body",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Q2V2Jf",
+                  "name": "Chip Hatchback",
+                  "height": 40,
+                  "fill": "$surface",
+                  "cornerRadius": 100,
+                  "stroke": "$line",
+                  "strokeWidth": 1,
+                  "padding": [
+                    0,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "OP5kV",
+                      "name": "Chip Label",
+                      "fill": "$ink",
+                      "content": "Hatchback",
+                      "fontFamily": "$font-body",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "utlDf",
+                  "name": "Chip Pickup",
+                  "height": 40,
+                  "fill": "$surface",
+                  "cornerRadius": 100,
+                  "stroke": "$line",
+                  "strokeWidth": 1,
+                  "padding": [
+                    0,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "C9J1eZ",
+                      "name": "Chip Label",
+                      "fill": "$ink",
+                      "content": "Pickup",
+                      "fontFamily": "$font-body",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "NOYps",
+                  "name": "Chip Utilitario",
+                  "height": 40,
+                  "fill": "$surface",
+                  "cornerRadius": 100,
+                  "stroke": "$line",
+                  "strokeWidth": 1,
+                  "padding": [
+                    0,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "AYoLN",
+                      "name": "Chip Label",
+                      "fill": "$ink",
+                      "content": "Utilitario",
+                      "fontFamily": "$font-body",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "NMnPg",
+          "name": "Destacados",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": [
+            32,
+            20,
+            40,
+            20
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "DP5vv",
+              "name": "Section Head",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "end",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "d4o4J",
+                  "name": "Head Text",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "LNqxL",
+                      "name": "Eyebrow",
+                      "fill": "$accent",
+                      "content": "STOCK DESTACADO",
+                      "fontFamily": "$font-body",
+                      "fontSize": 12,
+                      "fontWeight": "700",
+                      "letterSpacing": 1.5
+                    },
+                    {
+                      "type": "text",
+                      "id": "jXqCm",
+                      "name": "Section Title",
+                      "fill": "$ink",
+                      "content": "Recién llegados",
+                      "fontFamily": "$font-head",
+                      "fontSize": 28,
+                      "fontWeight": "900",
+                      "letterSpacing": -0.5
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "h9wPj4",
+                  "name": "See All",
+                  "fill": "$ink",
+                  "content": "Ver todos",
+                  "fontFamily": "$font-body",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "id": "wygs0",
+              "type": "ref",
+              "ref": "F2sxg",
+              "name": "Card Toyota Corolla XEI 2.0",
+              "width": "fill_container",
+              "descendants": {
+                "LHVBV": {
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1762097359835-343a30e647ac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3OTM2NDQ0MzR8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "cover"
+                  }
+                },
+                "Mys2g": {
+                  "content": "FINANCIABLE"
+                },
+                "ufUyj": {
+                  "content": "Toyota Corolla XEI 2.0"
+                },
+                "oQNGE": {
+                  "content": "2021 · 48.000 km · Automático"
+                },
+                "nGxl1": {
+                  "content": "US$ 18.900"
+                }
+              }
+            },
+            {
+              "id": "FajEE",
+              "type": "ref",
+              "ref": "F2sxg",
+              "name": "Card Volkswagen Amarok V6",
+              "width": "fill_container",
+              "descendants": {
+                "LHVBV": {
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1679251884095-d6ad5095b8ed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3OTM2NDQ0MzR8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "cover"
+                  }
+                },
+                "Mys2g": {
+                  "content": "TOMAMOS TU USADO"
+                },
+                "ufUyj": {
+                  "content": "Volkswagen Amarok V6"
+                },
+                "oQNGE": {
+                  "content": "2019 · 92.000 km · 4x4 · Diésel"
+                },
+                "nGxl1": {
+                  "content": "US$ 27.500"
+                }
+              }
+            },
+            {
+              "id": "XdilO",
+              "type": "ref",
+              "ref": "F2sxg",
+              "name": "Card Peugeot 208 Allure",
+              "width": "fill_container",
+              "descendants": {
+                "LHVBV": {
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1785996758006-c6c95dcfbb41?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3OTM2NDQ0MzN8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "cover"
+                  }
+                },
+                "Mys2g": {
+                  "content": "ÚNICO DUEÑO"
+                },
+                "ufUyj": {
+                  "content": "Peugeot 208 Allure"
+                },
+                "oQNGE": {
+                  "content": "2022 · 31.000 km · Manual"
+                },
+                "nGxl1": {
+                  "content": "US$ 14.200"
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "S6Jky",
+              "name": "See Stock CTA",
+              "width": "fill_container",
+              "height": 56,
+              "cornerRadius": 8,
+              "stroke": "$ink",
+              "strokeWidth": 1.5,
+              "gap": 10,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Q7ADtI",
+                  "name": "Label",
+                  "fill": "$ink",
+                  "content": "Ver los 84 autos del stock",
+                  "fontFamily": "$font-body",
+                  "fontSize": 16,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "icon",
+                  "id": "o3gUOx",
+                  "name": "Arrow",
+                  "width": 18,
+                  "height": 18,
+                  "icon": "arrow-right",
+                  "library": "lucide",
+                  "fill": "$ink"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "bWJYs",
+          "name": "Por qué Leader",
+          "width": "fill_container",
+          "fill": "$surface",
+          "layout": "vertical",
+          "gap": 28,
+          "padding": [
+            48,
+            20
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "A7qePn",
+              "name": "Why Head",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 10,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ZGFx4",
+                  "name": "Eyebrow",
+                  "fill": "$accent",
+                  "content": "POR QUÉ LEADER",
+                  "fontFamily": "$font-body",
+                  "fontSize": 12,
+                  "fontWeight": "700",
+                  "letterSpacing": 1.5
+                },
+                {
+                  "type": "text",
+                  "id": "UPNiQ",
+                  "name": "Title",
+                  "fill": "$ink",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Comprar un usado no tiene por qué ser una apuesta.",
+                  "lineHeight": 1.1,
+                  "fontFamily": "$font-head",
+                  "fontSize": 28,
+                  "fontWeight": "900",
+                  "letterSpacing": -0.5
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "fyaED",
+              "name": "Why List",
+              "width": "fill_container",
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "V3dzK",
+                  "name": "Item Peritaje de 120 puntos",
+                  "width": "fill_container",
+                  "stroke": "$line",
+                  "strokeWidth": {
+                    "top": 1,
+                    "bottom": 1
+                  },
+                  "gap": 16,
+                  "padding": [
+                    18,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "duC5B",
+                      "name": "Icon Box",
+                      "width": 44,
+                      "height": 44,
+                      "fill": "#E8452C14",
+                      "cornerRadius": 8,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "YPZYK",
+                          "name": "Icon",
+                          "width": 22,
+                          "height": 22,
+                          "icon": "shield-check",
+                          "library": "lucide",
+                          "fill": "$accent"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "j7Ve1Y",
+                      "name": "Text",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 4,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "cZ7hM",
+                          "name": "Item Title",
+                          "fill": "$ink",
+                          "content": "Peritaje de 120 puntos",
+                          "fontFamily": "$font-head",
+                          "fontSize": 17,
+                          "fontWeight": "800"
+                        },
+                        {
+                          "type": "text",
+                          "id": "BMXcw",
+                          "name": "Item Desc",
+                          "fill": "$ink-soft",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Cada auto pasa por mecánica, chapa y electrónica antes de publicarse.",
+                          "lineHeight": 1.5,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "WYC2S",
+                  "name": "Item Papeles al día",
+                  "width": "fill_container",
+                  "stroke": "$line",
+                  "strokeWidth": {
+                    "bottom": 1
+                  },
+                  "gap": 16,
+                  "padding": [
+                    18,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "Lx7fQ",
+                      "name": "Icon Box",
+                      "width": 44,
+                      "height": 44,
+                      "fill": "#E8452C14",
+                      "cornerRadius": 8,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "H9nq2p",
+                          "name": "Icon",
+                          "width": 22,
+                          "height": 22,
+                          "icon": "file-check",
+                          "library": "lucide",
+                          "fill": "$accent"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "xygVd",
+                      "name": "Text",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 4,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "O8dj5w",
+                          "name": "Item Title",
+                          "fill": "$ink",
+                          "content": "Papeles al día",
+                          "fontFamily": "$font-head",
+                          "fontSize": 17,
+                          "fontWeight": "800"
+                        },
+                        {
+                          "type": "text",
+                          "id": "i9DZB",
+                          "name": "Item Desc",
+                          "fill": "$ink-soft",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Verificamos dominio, multas e informes. Transferencia en el día.",
+                          "lineHeight": 1.5,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "EIxCJ",
+                  "name": "Item Garantía escrita",
+                  "width": "fill_container",
+                  "stroke": "$line",
+                  "strokeWidth": {
+                    "bottom": 1
+                  },
+                  "gap": 16,
+                  "padding": [
+                    18,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "N810G",
+                      "name": "Icon Box",
+                      "width": 44,
+                      "height": 44,
+                      "fill": "#E8452C14",
+                      "cornerRadius": 8,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "FHchg",
+                          "name": "Icon",
+                          "width": 22,
+                          "height": 22,
+                          "icon": "badge-check",
+                          "library": "lucide",
+                          "fill": "$accent"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "B5fz4",
+                      "name": "Text",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 4,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "gQCE8",
+                          "name": "Item Title",
+                          "fill": "$ink",
+                          "content": "Garantía escrita",
+                          "fontFamily": "$font-head",
+                          "fontSize": 17,
+                          "fontWeight": "800"
+                        },
+                        {
+                          "type": "text",
+                          "id": "OxjYW",
+                          "name": "Item Desc",
+                          "fill": "$ink-soft",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "3 meses de garantía mecánica en motor y caja en todas las unidades.",
+                          "lineHeight": 1.5,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "IgaOS",
+                  "name": "Item Prueba sin compromiso",
+                  "width": "fill_container",
+                  "stroke": "$line",
+                  "strokeWidth": {
+                    "bottom": 1
+                  },
+                  "gap": 16,
+                  "padding": [
+                    18,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "M2HCJX",
+                      "name": "Icon Box",
+                      "width": 44,
+                      "height": 44,
+                      "fill": "#E8452C14",
+                      "cornerRadius": 8,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "xwdK1",
+                          "name": "Icon",
+                          "width": 22,
+                          "height": 22,
+                          "icon": "key-round",
+                          "library": "lucide",
+                          "fill": "$accent"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "puZRF",
+                      "name": "Text",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 4,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ylK7k",
+                          "name": "Item Title",
+                          "fill": "$ink",
+                          "content": "Prueba sin compromiso",
+                          "fontFamily": "$font-head",
+                          "fontSize": 17,
+                          "fontWeight": "800"
+                        },
+                        {
+                          "type": "text",
+                          "id": "sR8Yq",
+                          "name": "Item Desc",
+                          "fill": "$ink-soft",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Agenda tu test drive por WhatsApp y maneja antes de decidir.",
+                          "lineHeight": 1.5,
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "o4dNj",
+          "name": "Tomamos tu usado",
+          "width": "fill_container",
+          "fill": "$dark",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            48,
+            20
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "Gi2En",
+              "name": "Trade Head",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 10,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "K0Pe5J",
+                  "name": "Eyebrow",
+                  "fill": "$accent",
+                  "content": "PLAN CANJE",
+                  "fontFamily": "$font-body",
+                  "fontSize": 12,
+                  "fontWeight": "700",
+                  "letterSpacing": 1.5
+                },
+                {
+                  "type": "text",
+                  "id": "KhrV4",
+                  "name": "Title",
+                  "fill": "#FFFFFF",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Tu auto actual vale como parte de pago.",
+                  "lineHeight": 1.05,
+                  "fontFamily": "$font-head",
+                  "fontSize": 30,
+                  "fontWeight": "900",
+                  "letterSpacing": -0.5
+                },
+                {
+                  "type": "text",
+                  "id": "P8c1IT",
+                  "name": "Desc",
+                  "fill": "#FFFFFFB3",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Envíanos fotos y datos por WhatsApp y te pasamos una cotización en menos de 24 horas.",
+                  "lineHeight": 1.5,
+                  "fontFamily": "$font-body",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "shJyk",
+              "name": "Steps",
+              "width": "fill_container",
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "P5v7Zu",
+                  "name": "Step 01",
+                  "width": "fill_container",
+                  "stroke": "#FFFFFF1F",
+                  "strokeWidth": {
+                    "bottom": 1
+                  },
+                  "gap": 16,
+                  "padding": [
+                    14,
+                    0
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "pukAP",
+                      "name": "Num",
+                      "fill": "$accent",
+                      "content": "01",
+                      "fontFamily": "$font-head",
+                      "fontSize": 28,
+                      "fontWeight": "900"
+                    },
+                    {
+                      "type": "text",
+                      "id": "UG9jO",
+                      "name": "Step Text",
+                      "fill": "#FFFFFF",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Envía fotos y kilometraje",
+                      "fontFamily": "$font-body",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "D06Gw",
+                  "name": "Step 02",
+                  "width": "fill_container",
+                  "stroke": "#FFFFFF1F",
+                  "strokeWidth": {
+                    "bottom": 1
+                  },
+                  "gap": 16,
+                  "padding": [
+                    14,
+                    0
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Tzu54",
+                      "name": "Num",
+                      "fill": "$accent",
+                      "content": "02",
+                      "fontFamily": "$font-head",
+                      "fontSize": 28,
+                      "fontWeight": "900"
+                    },
+                    {
+                      "type": "text",
+                      "id": "hFVTX",
+                      "name": "Step Text",
+                      "fill": "#FFFFFF",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Recibe tu cotización en 24 h",
+                      "fontFamily": "$font-body",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "NJWxZ",
+                  "name": "Step 03",
+                  "width": "fill_container",
+                  "stroke": "#FFFFFF1F",
+                  "gap": 16,
+                  "padding": [
+                    14,
+                    0
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "WhnTV",
+                      "name": "Num",
+                      "fill": "$accent",
+                      "content": "03",
+                      "fontFamily": "$font-head",
+                      "fontSize": 28,
+                      "fontWeight": "900"
+                    },
+                    {
+                      "type": "text",
+                      "id": "fc6GB",
+                      "name": "Step Text",
+                      "fill": "#FFFFFF",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Elige tu próximo auto y entrégalo",
+                      "fontFamily": "$font-body",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "eCuBo",
+              "name": "Trade CTA",
+              "width": "fill_container",
+              "height": 56,
+              "fill": "$accent",
+              "cornerRadius": 8,
+              "gap": 10,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "W6dyk",
+                  "name": "Icon",
+                  "width": 18,
+                  "height": 18,
+                  "icon": "message-circle",
+                  "library": "lucide",
+                  "fill": "#FFFFFF"
+                },
+                {
+                  "type": "text",
+                  "id": "M1gF9",
+                  "name": "Label",
+                  "fill": "#FFFFFF",
+                  "content": "Cotizar mi usado",
+                  "fontFamily": "$font-body",
+                  "fontSize": 16,
+                  "fontWeight": "700"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "vDWiu",
+          "name": "Financiación",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 20,
+          "padding": [
+            48,
+            20
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "ue86I",
+              "name": "Fin Head",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 10,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "is40E",
+                  "name": "Eyebrow",
+                  "fill": "$accent",
+                  "content": "FINANCIACIÓN",
+                  "fontFamily": "$font-body",
+                  "fontSize": 12,
+                  "fontWeight": "700",
+                  "letterSpacing": 1.5
+                },
+                {
+                  "type": "text",
+                  "id": "MWgqx",
+                  "name": "Title",
+                  "fill": "$ink",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Llévatelo con el 40% y el resto en cuotas.",
+                  "lineHeight": 1.1,
+                  "fontFamily": "$font-head",
+                  "fontSize": 28,
+                  "fontWeight": "900",
+                  "letterSpacing": -0.5
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "k86GY",
+              "name": "Fin Example",
+              "width": "fill_container",
+              "fill": "$surface",
+              "cornerRadius": 12,
+              "stroke": "$line",
+              "strokeWidth": 1,
+              "layout": "vertical",
+              "gap": 16,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Eq24k",
+                  "name": "Example Label",
+                  "fill": "$ink-soft",
+                  "content": "Ejemplo: Peugeot 208 · US$ 14.200",
+                  "fontFamily": "$font-body",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "frame",
+                  "id": "h6i8Ak",
+                  "name": "Row Entrega inicial",
+                  "width": "fill_container",
+                  "justifyContent": "space_between",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "jjoKI",
+                      "name": "K",
+                      "fill": "$ink-soft",
+                      "content": "Entrega inicial",
+                      "fontFamily": "$font-body",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "x2Q6dY",
+                      "name": "V",
+                      "fill": "$ink",
+                      "content": "US$ 5.680",
+                      "fontFamily": "$font-body",
+                      "fontSize": 15,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "gMJqV",
+                  "name": "Row Plazo",
+                  "width": "fill_container",
+                  "justifyContent": "space_between",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "fizGb",
+                      "name": "K",
+                      "fill": "$ink-soft",
+                      "content": "Plazo",
+                      "fontFamily": "$font-body",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "YXdaP",
+                      "name": "V",
+                      "fill": "$ink",
+                      "content": "36 cuotas fijas",
+                      "fontFamily": "$font-body",
+                      "fontSize": 15,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "fR8LJ",
+                  "name": "Quota",
+                  "width": "fill_container",
+                  "stroke": "$line",
+                  "strokeWidth": {
+                    "top": 1
+                  },
+                  "padding": [
+                    16,
+                    0,
+                    0,
+                    0
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "end",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "eeGp0",
+                      "name": "K",
+                      "fill": "$ink",
+                      "content": "Cuota desde",
+                      "fontFamily": "$font-body",
+                      "fontSize": 15,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "cS9tI",
+                      "name": "V",
+                      "fill": "$ink",
+                      "content": "US$ 289",
+                      "fontFamily": "$font-head",
+                      "fontSize": 32,
+                      "fontWeight": "900"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "HLwXx",
+              "name": "Disclaimer",
+              "fill": "$ink-soft",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Valores de referencia. Sujeto a aprobación crediticia. Solo con DNI y recibo de sueldo.",
+              "lineHeight": 1.5,
+              "fontFamily": "$font-body",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "b4AYjS",
+          "name": "Testimonio",
+          "width": "fill_container",
+          "fill": "#EAE6DE",
+          "layout": "vertical",
+          "gap": 20,
+          "padding": [
+            48,
+            20
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "xVAP1",
+              "name": "Stars",
+              "gap": 4,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "oYLUi",
+                  "name": "Star",
+                  "width": 18,
+                  "height": 18,
+                  "icon": "star",
+                  "library": "lucide",
+                  "fill": "$accent"
+                },
+                {
+                  "type": "icon",
+                  "id": "pjn9Y",
+                  "name": "Star",
+                  "width": 18,
+                  "height": 18,
+                  "icon": "star",
+                  "library": "lucide",
+                  "fill": "$accent"
+                },
+                {
+                  "type": "icon",
+                  "id": "it0qx",
+                  "name": "Star",
+                  "width": 18,
+                  "height": 18,
+                  "icon": "star",
+                  "library": "lucide",
+                  "fill": "$accent"
+                },
+                {
+                  "type": "icon",
+                  "id": "jTDPN",
+                  "name": "Star",
+                  "width": 18,
+                  "height": 18,
+                  "icon": "star",
+                  "library": "lucide",
+                  "fill": "$accent"
+                },
+                {
+                  "type": "icon",
+                  "id": "OFKJS",
+                  "name": "Star",
+                  "width": 18,
+                  "height": 18,
+                  "icon": "star",
+                  "library": "lucide",
+                  "fill": "$accent"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "k03xdT",
+              "name": "Quote",
+              "fill": "$ink",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "“Me mandaron fotos, video y el informe del auto antes de ir. Llegué, lo probé y en dos horas me fui manejando. Cero sorpresas.”",
+              "lineHeight": 1.3,
+              "fontFamily": "$font-head",
+              "fontSize": 22,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "KmJPi",
+              "name": "Author",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "ellipse",
+                  "id": "wKBct",
+                  "name": "Avatar",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "carlosgil83",
+                    "link": "https://unsplash.com/@carlosgil83",
+                    "author": "Carlos Gil"
+                  },
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1590674360406-caa14d953baf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3OTM2NDQ0ODd8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "cover"
+                  },
+                  "width": 44,
+                  "height": 44
+                },
+                {
+                  "type": "frame",
+                  "id": "ldZn7",
+                  "name": "Author Text",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "JfSlY",
+                      "name": "Name",
+                      "fill": "$ink",
+                      "content": "Martín G.",
+                      "fontFamily": "$font-body",
+                      "fontSize": 15,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "p2FhO",
+                      "name": "Detail",
+                      "fill": "$ink-soft",
+                      "content": "Compró un Toyota Corolla 2021",
+                      "fontFamily": "$font-body",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "naVA2",
+          "name": "Visítanos",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 20,
+          "padding": [
+            48,
+            20
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "qMJ83",
+              "name": "Visit Head",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 10,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "dat2G",
+                  "name": "Eyebrow",
+                  "fill": "$accent",
+                  "content": "VISÍTANOS",
+                  "fontFamily": "$font-body",
+                  "fontSize": 12,
+                  "fontWeight": "700",
+                  "letterSpacing": 1.5
+                },
+                {
+                  "type": "text",
+                  "id": "EvLZj",
+                  "name": "Title",
+                  "fill": "$ink",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Ven a verlos en persona.",
+                  "fontFamily": "$font-head",
+                  "fontSize": 28,
+                  "fontWeight": "900",
+                  "letterSpacing": -0.5
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "rQcnJ",
+              "name": "Map",
+              "metadata": {
+                "type": "unsplash",
+                "username": "jjames25",
+                "link": "https://unsplash.com/@jjames25",
+                "author": "Jeff James"
+              },
+              "width": "fill_container",
+              "height": 180,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "https://images.unsplash.com/photo-1655247204353-cd7942f70d45?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3OTM2NDQ0ODd8&ixlib=rb-4.1.0&q=80&w=1080",
+                "mode": "cover"
+              },
+              "cornerRadius": 12,
+              "justifyContent": "center",
+              "alignItems": "center"
+            },
+            {
+              "type": "frame",
+              "id": "EB7bM",
+              "name": "Info",
+              "width": "fill_container",
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "oFShA",
+                  "name": "Info map-pin",
+                  "width": "fill_container",
+                  "stroke": "$line",
+                  "strokeWidth": {
+                    "bottom": 1
+                  },
+                  "gap": 14,
+                  "padding": [
+                    14,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "WgHvS",
+                      "name": "Icon",
+                      "width": 20,
+                      "height": 20,
+                      "icon": "map-pin",
+                      "library": "lucide",
+                      "fill": "$ink"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "U6RKap",
+                      "name": "Text",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "sNEHn",
+                          "name": "Main",
+                          "fill": "$ink",
+                          "content": "Av. Principal 1234, Ciudad",
+                          "fontFamily": "$font-body",
+                          "fontSize": 15,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "I54BJ",
+                          "name": "Sub",
+                          "fill": "$ink-soft",
+                          "content": "A 2 cuadras de la estación",
+                          "fontFamily": "$font-body",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "x7fvs",
+                  "name": "Info clock",
+                  "width": "fill_container",
+                  "stroke": "$line",
+                  "strokeWidth": {
+                    "bottom": 1
+                  },
+                  "gap": 14,
+                  "padding": [
+                    14,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "MFONv",
+                      "name": "Icon",
+                      "width": 20,
+                      "height": 20,
+                      "icon": "clock-3",
+                      "library": "lucide",
+                      "fill": "$ink"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sCPWr",
+                      "name": "Text",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Aos94",
+                          "name": "Main",
+                          "fill": "$ink",
+                          "content": "Lunes a viernes 9 a 19 h",
+                          "fontFamily": "$font-body",
+                          "fontSize": 15,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "gDhpu",
+                          "name": "Sub",
+                          "fill": "$ink-soft",
+                          "content": "Sábados 9 a 14 h",
+                          "fontFamily": "$font-body",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "YP8dV",
+                  "name": "Info phone",
+                  "width": "fill_container",
+                  "stroke": "$line",
+                  "gap": 14,
+                  "padding": [
+                    14,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "YWojF",
+                      "name": "Icon",
+                      "width": 20,
+                      "height": 20,
+                      "icon": "phone",
+                      "library": "lucide",
+                      "fill": "$ink"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "AtHLY",
+                      "name": "Text",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "X6nPT",
+                          "name": "Main",
+                          "fill": "$ink",
+                          "content": "+54 9 11 1234-5678",
+                          "fontFamily": "$font-body",
+                          "fontSize": 15,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "tGmHC",
+                          "name": "Sub",
+                          "fill": "$ink-soft",
+                          "content": "Llamadas y WhatsApp",
+                          "fontFamily": "$font-body",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "IPkQo",
+              "name": "Visit CTAs",
+              "width": "fill_container",
+              "gap": 10,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "L5XABI",
+                  "name": "Cómo llegar Button",
+                  "width": "fill_container",
+                  "height": 52,
+                  "fill": "$surface",
+                  "cornerRadius": 8,
+                  "stroke": "$line",
+                  "strokeWidth": 1,
+                  "gap": 8,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "d6ydeA",
+                      "name": "Icon",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "navigation",
+                      "library": "lucide",
+                      "fill": "$ink"
+                    },
+                    {
+                      "type": "text",
+                      "id": "J7WshM",
+                      "name": "Label",
+                      "fill": "$ink",
+                      "content": "Cómo llegar",
+                      "fontFamily": "$font-body",
+                      "fontSize": 15,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "lzvsr",
+                  "name": "WhatsApp Button",
+                  "width": "fill_container",
+                  "height": 52,
+                  "fill": "$accent",
+                  "cornerRadius": 8,
+                  "gap": 8,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "JQWRw",
+                      "name": "Icon",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "message-circle",
+                      "library": "lucide",
+                      "fill": "#FFFFFF"
+                    },
+                    {
+                      "type": "text",
+                      "id": "R0wRz1",
+                      "name": "Label",
+                      "fill": "#FFFFFF",
+                      "content": "WhatsApp",
+                      "fontFamily": "$font-body",
+                      "fontSize": 15,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "C1Xxnd",
+          "name": "Footer",
+          "width": "fill_container",
+          "fill": "$dark",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            40,
+            20,
+            32,
+            20
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "FiUKM",
+              "name": "Footer Logo",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "RD4OL",
+                  "name": "Logo Mark",
+                  "width": 32,
+                  "height": 32,
+                  "fill": "$accent",
+                  "cornerRadius": 4,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "PXl4H",
+                      "name": "Logo Letter",
+                      "fill": "#FFFFFF",
+                      "content": "L",
+                      "fontFamily": "$font-head",
+                      "fontSize": 20,
+                      "fontWeight": "900"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "EyUD8",
+                  "name": "Logo Text",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "KUv60",
+                      "name": "Logo Name",
+                      "fill": "#FFFFFF",
+                      "content": "LEADER",
+                      "lineHeight": 1,
+                      "fontFamily": "$font-head",
+                      "fontSize": 17,
+                      "fontWeight": "900",
+                      "letterSpacing": 1.5
+                    },
+                    {
+                      "type": "text",
+                      "id": "NiLNO",
+                      "name": "Logo Sub",
+                      "fill": "#FFFFFFB3",
+                      "content": "GROUP · AUTOS",
+                      "fontFamily": "$font-body",
+                      "fontSize": 9,
+                      "fontWeight": "600",
+                      "letterSpacing": 2
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "hbzNo",
+              "name": "Footer Desc",
+              "fill": "#FFFFFFA6",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Venta de autos usados seleccionados. Compra, venta, canje y financiación.",
+              "lineHeight": 1.5,
+              "fontFamily": "$font-body",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "rYs7V",
+              "name": "Footer Links",
+              "width": "fill_container",
+              "gap": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "FWmwI",
+                  "name": "Stock",
+                  "fill": "#FFFFFF",
+                  "content": "Stock",
+                  "fontFamily": "$font-body",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "TYpOk",
+                  "name": "Canje",
+                  "fill": "#FFFFFF",
+                  "content": "Canje",
+                  "fontFamily": "$font-body",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "MnRzo",
+                  "name": "Financiación",
+                  "fill": "#FFFFFF",
+                  "content": "Financiación",
+                  "fontFamily": "$font-body",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "WR06g",
+                  "name": "Contacto",
+                  "fill": "#FFFFFF",
+                  "content": "Contacto",
+                  "fontFamily": "$font-body",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "m0Rlr",
+              "name": "Social",
+              "gap": 10,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "bSzf4",
+                  "name": "Social instagram",
+                  "width": 44,
+                  "height": 44,
+                  "cornerRadius": 22,
+                  "stroke": "#FFFFFF33",
+                  "strokeWidth": 1,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "qms5g",
+                      "name": "Icon",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "instagram",
+                      "library": "lucide",
+                      "fill": "#FFFFFF"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "WmKfa",
+                  "name": "Social facebook",
+                  "width": 44,
+                  "height": 44,
+                  "cornerRadius": 22,
+                  "stroke": "#FFFFFF33",
+                  "strokeWidth": 1,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "CBTYE",
+                      "name": "Icon",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "facebook",
+                      "library": "lucide",
+                      "fill": "#FFFFFF"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "K4Epx",
+                  "name": "Social message-circle",
+                  "width": 44,
+                  "height": 44,
+                  "cornerRadius": 22,
+                  "stroke": "#FFFFFF33",
+                  "strokeWidth": 1,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "NeO2X",
+                      "name": "Icon",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "message-circle",
+                      "library": "lucide",
+                      "fill": "#FFFFFF"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "H9yAXv",
+              "name": "Legal",
+              "fill": "#FFFFFF73",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "© 2026 Leader Group. Todos los derechos reservados.",
+              "fontFamily": "$font-body",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "F2sxg",
+      "x": 0,
+      "y": 0,
+      "name": "Vehicle Card",
+      "reusable": true,
+      "clip": true,
+      "width": 350,
+      "fill": "$surface",
+      "cornerRadius": 12,
+      "stroke": "$line",
+      "strokeWidth": 1,
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "LHVBV",
+          "name": "Photo",
+          "metadata": {
+            "type": "unsplash",
+            "username": "andru_ak",
+            "link": "https://unsplash.com/@andru_ak",
+            "author": "Andrew Akabane"
+          },
+          "width": "fill_container",
+          "height": 210,
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "https://images.unsplash.com/photo-1743308298784-ba0b26dbfac7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3OTM2NDQ0MzR8&ixlib=rb-4.1.0&q=80&w=1080",
+            "mode": "cover"
+          },
+          "padding": 12,
+          "justifyContent": "space_between",
+          "children": [
+            {
+              "type": "frame",
+              "id": "Co0Ek",
+              "name": "Tag",
+              "fill": "$dark",
+              "cornerRadius": 4,
+              "padding": [
+                5,
+                10
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Mys2g",
+                  "name": "Tag Text",
+                  "fill": "#FFFFFF",
+                  "content": "FINANCIABLE",
+                  "fontFamily": "$font-body",
+                  "fontSize": 11,
+                  "fontWeight": "700",
+                  "letterSpacing": 0.8
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "LPk79",
+              "name": "Fav",
+              "width": 36,
+              "height": 36,
+              "fill": "#FFFFFFE6",
+              "cornerRadius": 18,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "R80t7r",
+                  "name": "Heart",
+                  "width": 18,
+                  "height": 18,
+                  "icon": "heart",
+                  "library": "lucide",
+                  "fill": "$ink"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "g2Ogqh",
+          "name": "Body",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 14,
+          "padding": 16,
+          "children": [
+            {
+              "type": "frame",
+              "id": "IGYll",
+              "name": "Title Group",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ufUyj",
+                  "name": "Title",
+                  "fill": "$ink",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Toyota Corolla XEI 2.0",
+                  "fontFamily": "$font-head",
+                  "fontSize": 19,
+                  "fontWeight": "800"
+                },
+                {
+                  "type": "text",
+                  "id": "oQNGE",
+                  "name": "Meta",
+                  "fill": "$ink-soft",
+                  "content": "2021 · 48.000 km · Automático",
+                  "fontFamily": "$font-body",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "KA0yf",
+              "name": "Price Row",
+              "width": "fill_container",
+              "stroke": "$line",
+              "strokeWidth": {
+                "top": 1
+              },
+              "padding": [
+                14,
+                0,
+                0,
+                0
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ZTC8L",
+                  "name": "Price Group",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "YY5KN",
+                      "name": "Price Label",
+                      "fill": "$ink-soft",
+                      "content": "Precio contado",
+                      "fontFamily": "$font-body",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "nGxl1",
+                      "name": "Price",
+                      "fill": "$ink",
+                      "content": "US$ 18.900",
+                      "fontFamily": "$font-head",
+                      "fontSize": 22,
+                      "fontWeight": "900"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "p2V3v",
+                  "name": "Ask Button",
+                  "height": 44,
+                  "fill": "$ink",
+                  "cornerRadius": 8,
+                  "gap": 6,
+                  "padding": [
+                    0,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "uha5l",
+                      "name": "Ask Label",
+                      "fill": "#FFFFFF",
+                      "content": "Consultar",
+                      "fontFamily": "$font-body",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "icon",
+                      "id": "bved7",
+                      "name": "Ask Arrow",
+                      "width": 16,
+                      "height": 16,
+                      "icon": "arrow-up-right",
+                      "library": "lucide",
+                      "fill": "#FFFFFF"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "bg": {
+      "type": "color",
+      "value": "#F4F2EE"
+    },
+    "surface": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "ink": {
+      "type": "color",
+      "value": "#111317"
+    },
+    "ink-soft": {
+      "type": "color",
+      "value": "#5B5F66"
+    },
+    "line": {
+      "type": "color",
+      "value": "#E2DED6"
+    },
+    "accent": {
+      "type": "color",
+      "value": "#E8452C"
+    },
+    "dark": {
+      "type": "color",
+      "value": "#0E1013"
+    },
+    "font-head": {
+      "type": "string",
+      "value": "Archivo"
+    },
+    "font-body": {
+      "type": "string",
+      "value": "Inter"
+    }
+  },
+  "fileToken": "2a7383ee-a7e2-40c3-9a6c-4fc82b5f3aa3"
+}
