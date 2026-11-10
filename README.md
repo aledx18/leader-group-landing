@@ -28,7 +28,7 @@ Environment Variables. All of them are read at build time only.
 
 | Variable | Required | Purpose |
 | --- | --- | --- |
-| `SITE_URL` | before launch | Canonical origin, for example `https://leadergroup.com.ar`. Drives canonical URLs, Open Graph, JSON-LD, sitemap and robots.txt. Defaults to the placeholder `https://leadergroup.example`. |
+| `SITE_URL` | before launch | Canonical origin, for example `https://leadergroup.com.ar`. Drives canonical URLs, Open Graph, JSON-LD, sitemap and robots.txt. When unset, a Vercel build uses the project's production URL (and logs a warning on production); anywhere else it falls back to the placeholder `https://leadergroup.example`. |
 | `STOCK_API_URL` | no | Stock endpoint. Unset: the build uses `src/data/stock-fixture.ts`. Set and failing: the build fails on purpose. |
 | `STOCK_API_KEY` | no | Sent as `apikey` and `Authorization: Bearer` headers (Supabase). |
 

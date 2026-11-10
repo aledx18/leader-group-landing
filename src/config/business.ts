@@ -8,7 +8,7 @@ export const business = {
 
   /** TODO(real data): WhatsApp number with country code (wa.me format, digits are extracted). */
   whatsapp: "+54 9 11 1234-5678",
-  /** TODO(real data): phone as displayed. */
+  /** TODO(real data): phone as displayed. Keep the country code: the tel: link is built from its digits. */
   phoneDisplay: "+54 9 11 1234-5678",
   phoneNote: "Llamadas y WhatsApp",
 

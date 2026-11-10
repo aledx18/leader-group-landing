@@ -104,6 +104,7 @@ const otherSizes =
 
       <ul class="flex flex-col rounded-xl border border-line bg-paper px-4">
         {
+          // Only the first two claims (inspection, paperwork) fit beside the price.
           business.reasons.slice(0, 2).map((reason) => (
             <li class="flex gap-3 border-b border-line py-3.5">
               <Icon name={reason.icon} size={20} class="mt-0.5 shrink-0 text-brand" />
