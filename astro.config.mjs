@@ -1,7 +1,7 @@
 // @ts-check
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
-import { defineConfig } from "astro/config";
+import { defineConfig, envField } from "astro/config";
 import { loadEnv } from "vite";
 
 const env = loadEnv(process.env.NODE_ENV ?? "production", process.cwd(), "");
@@ -13,12 +13,40 @@ const env = loadEnv(process.env.NODE_ENV ?? "production", process.cwd(), "");
  */
 const SITE_URL = env.SITE_URL || "https://leadergroup.example";
 
+/**
+ * Remote photo hosts astro:assets may download and optimize at build time:
+ * the stock endpoint's own host plus any Supabase project (storage URLs).
+ */
+const remotePatterns = [{ protocol: "https", hostname: "**.supabase.co" }];
+if (env.STOCK_API_URL) {
+  try {
+    const { protocol, hostname } = new URL(env.STOCK_API_URL);
+    remotePatterns.push({ protocol: protocol.replace(":", ""), hostname });
+  } catch {
+    // Invalid URL: astro:env validation reports it with a clear message.
+  }
+}
+
 // https://astro.build/config
 export default defineConfig({
   site: SITE_URL,
   output: "static",
   trailingSlash: "always",
   integrations: [sitemap()],
+  image: {
+    remotePatterns,
+  },
+  env: {
+    schema: {
+      STOCK_API_URL: envField.string({
+        context: "server",
+        access: "secret",
+        optional: true,
+        url: true,
+      }),
+      STOCK_API_KEY: envField.string({ context: "server", access: "secret", optional: true }),
+    },
+  },
   vite: {
     plugins: [tailwindcss()],
   },
